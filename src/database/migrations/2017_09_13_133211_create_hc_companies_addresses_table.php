@@ -15,7 +15,7 @@ class CreateHcCompaniesAddressesTable extends Migration {
 		Schema::create('hc_companies_addresses', function(Blueprint $table)
 		{
 			$table->integer('count', true);
-			$table->string('id', 36)->primary();
+			$table->string('id', 36);
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('company_id', 36)->index('fk_hc_companies_addresses_hc_companies1_idx');

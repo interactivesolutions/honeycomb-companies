@@ -106,7 +106,7 @@ class HCCompaniesForm
                     "requiredVisible" => 1,
                     "dependencies"    => [
                         [
-                            "field_id" => "city_id",
+                            "field_id" => "country_id",
                         ],
                     ],
                 ], [
@@ -115,7 +115,7 @@ class HCCompaniesForm
                     "label"        => trans("HCCompanies::hc_companies.code"),
                     "dependencies" => [
                         [
-                            "field_id" => "city_id",
+                            "field_id" => "country_id",
                         ],
                     ],
                 ], [
@@ -124,7 +124,7 @@ class HCCompaniesForm
                     "label"        => trans("HCCompanies::hc_companies.vat"),
                     "dependencies" => [
                         [
-                            "field_id" => "city_id",
+                            "field_id" => "country_id",
                         ],
                     ],
                 ], [
@@ -137,7 +137,7 @@ class HCCompaniesForm
                     "uploadDataTypes" => ["image/jpg", "image/jpeg", "image/png", "image/svg+xml"],
                     "dependencies"    => [
                         [
-                            "field_id" => "city_id",
+                            "field_id" => "country_id",
                         ],
                     ],
                 ], [
@@ -146,7 +146,7 @@ class HCCompaniesForm
                     "label"        => trans("HCCompanies::hc_companies.website"),
                     "dependencies" => [
                         [
-                            "field_id" => "city_id",
+                            "field_id" => "country_id",
                         ],
                     ],
                 ],

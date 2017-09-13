@@ -53,6 +53,14 @@ class HCCompaniesController extends HCBaseController
     public function getAdminListHeader ()
     {
         return [
+            'logo_id'    => [
+                "type"  => "image",
+                "label" => trans('HCTranslations::core.logo'),
+            ],
+            'id'       => [
+                "type"  => "text",
+                "label" => trans('HCCompanies::hc_companies.code'),
+            ],
             'name'       => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.name'),
@@ -61,11 +69,15 @@ class HCCompaniesController extends HCBaseController
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.vat'),
             ],
-            'country_id' => [
+            'country.translation' => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.country_id'),
             ],
-            'city_id'    => [
+            'municipality.translation' => [
+                "type"  => "text",
+                "label" => trans('HCTranslations::core.municipality'),
+            ],
+            'city.name'    => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.city_id'),
             ],
@@ -73,10 +85,7 @@ class HCCompaniesController extends HCBaseController
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.type_id'),
             ],
-            'logo_id'    => [
-                "type"  => "text",
-                "label" => trans('HCCompanies::hc_companies.logo_id'),
-            ],
+
             'website'    => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.website'),
@@ -235,12 +244,13 @@ class HCCompaniesController extends HCBaseController
         array_set($data, 'record.name', array_get($_data, 'name'));
         array_set($data, 'record.vat', array_get($_data, 'vat'));
         array_set($data, 'record.country_id', array_get($_data, 'country_id'));
+        array_set($data, 'record.municipality_id', array_get($_data, 'municipality_id'));
         array_set($data, 'record.city_id', array_get($_data, 'city_id'));
         array_set($data, 'record.type_id', array_get($_data, 'type_id'));
         array_set($data, 'record.logo_id', array_get($_data, 'logo_id'));
         array_set($data, 'record.website', array_get($_data, 'website'));
 
-        return $data;
+        return makeEmptyNullable($data);
     }
 
     /**
