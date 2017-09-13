@@ -15,7 +15,7 @@ class AddForeignKeysToHcCompaniesTypesTranslationsTable extends Migration {
 		Schema::table('hc_companies_types_translations', function(Blueprint $table)
 		{
 			$table->foreign('record_id', 'fk_hc_companies_types_translations_hc_companies_types1')->references('id')->on('hc_companies_types')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('language_code', 'fk_hc_companies_types_translations_hc_languages1')->references('id')->on('hc_languages')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('language_code', 'fk_hc_companies_types_translations_hc_languages1')->references('iso_639_1')->on('hc_languages')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
