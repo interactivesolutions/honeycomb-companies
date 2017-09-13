@@ -45,54 +45,54 @@ class HCCompaniesForm
                         "showNodes"              => ["translation"],
                     ],
                 ], [
-                    "type"            => "dropDownList",
-                    "fieldID"         => "type_id",
-                    "label"           => trans("HCCompanies::hc_companies.type_id"),
-                    "tabID"           => trans("HCTranslations::core.general"),
-                    "search"          => [
+                    "type"         => "dropDownList",
+                    "fieldID"      => "type_id",
+                    "label"        => trans("HCCompanies::hc_companies.type_id"),
+                    "tabID"        => trans("HCTranslations::core.general"),
+                    "search"       => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
                         "showNodes"              => ["short_name"],
                     ],
-                    "dependencies"    => [
+                    "dependencies" => [
                         [
                             'field_id'    => 'country_id',
                             "options_url" => route('admin.api.routes.hc.companies.types.list'),
                         ],
                     ],
                 ], [
-                    "type"            => "dropDownList",
-                    "fieldID"         => "municipality_id",
-                    "label"           => trans("HCTranslations::core.municipality"),
-                    "tabID"           => trans("HCTranslations::core.general"),
-                    "search"          => [
+                    "type"         => "dropDownList",
+                    "fieldID"      => "municipality_id",
+                    "label"        => trans("HCTranslations::core.municipality"),
+                    "tabID"        => trans("HCTranslations::core.general"),
+                    "search"       => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
                         "showNodes"              => ["translation"],
                     ],
-                    "dependencies"    => [
+                    "dependencies" => [
                         [
                             "field_id"    => "country_id",
                             "options_url" => route('admin.api.regions.municipalities.list'),
                         ],
                     ],
                 ], [
-                    "type"            => "dropDownList",
-                    "fieldID"         => "city_id",
-                    "label"           => trans("HCTranslations::core.city"),
-                    "tabID"           => trans("HCTranslations::core.general"),
-                    "search"          => [
+                    "type"         => "dropDownList",
+                    "fieldID"      => "city_id",
+                    "label"        => trans("HCTranslations::core.city"),
+                    "tabID"        => trans("HCTranslations::core.general"),
+                    "search"       => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
                         "showNodes"              => ["name"],
                     ],
-                    "dependencies"    => [
+                    "dependencies" => [
                         [
                             "field_id"    => "municipality_id",
                             "options_url" => route('admin.api.regions.cities.list'),
                         ],
                     ],
-                    "new"             => [
+                    "new"          => [
                         "url"     => route('admin.api.form-manager', 'regions-cities-new'),
                         "require" => ['municipality_id'],
                     ],
@@ -112,7 +112,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "id",
                     "label"        => trans("HCCompanies::hc_companies.code"),
-                    "tabID"           => trans("HCTranslations::core.general"),
+                    "tabID"        => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
@@ -122,7 +122,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "vat",
                     "label"        => trans("HCCompanies::hc_companies.vat"),
-                    "tabID"           => trans("HCTranslations::core.general"),
+                    "tabID"        => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
@@ -146,7 +146,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "website",
                     "label"        => trans("HCCompanies::hc_companies.website"),
-                    "tabID"           => trans("HCTranslations::core.general"),
+                    "tabID"        => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
