@@ -24,6 +24,7 @@ class CreateHcCompaniesEmployeesTable extends Migration {
 			$table->string('surname')->nullable();
 			$table->string('position_id', 36)->index('fk_hc_companies_employees_hc_companies_positions1_idx');
 			$table->string('country_id', 36)->nullable()->index('fk_hc_companies_employees_hc_regions_countries1_idx');
+			$table->string('municipality_id', 36)->nullable()->index('fk_hc_companies_employees_hc_regions_municipalities1_idx');
 			$table->string('city_id', 36)->nullable()->index('fk_hc_companies_employees_hc_regions_cities1_idx');
 		});
 	}
