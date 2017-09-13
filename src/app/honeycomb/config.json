@@ -4,7 +4,8 @@
     },
     "formData": {
         "hc-companies": "interactivesolutions\\honeycombcompanies\\app\\forms\\HCCompaniesForm",
-        "hc-companies-types": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesTypesForm"
+        "hc-companies-types": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesTypesForm",
+        "hc-companies-positions": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesPositionsForm"
     },
     "adminMenu": [
         {
@@ -21,6 +22,14 @@
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
             "parent": "admin.routes.hc.companies.index",
             "priority": 10
+        },
+        {
+            "route": "admin.routes.hc.companies.positions.index",
+            "translation": "HCCompanies::hc_companies_positions.page_title",
+            "icon": "",
+            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+            "parent": "admin.routes.hc.companies.index",
+            "priority": 11
         }
     ],
     "acl": {
@@ -46,6 +55,17 @@
                     "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
                     "interactivesolutions_honeycomb_companies_routes_hc_companies_types_force_delete"
                 ]
+            },
+            {
+                "name": "admin.routes.hc.companies.positions",
+                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesPositionsController",
+                "actions": [
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_force_delete"
+                ]
             }
         ],
         "rolesActions": {
@@ -57,7 +77,11 @@
                 "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
                 "interactivesolutions_honeycomb_companies_routes_hc_companies_types_create",
                 "interactivesolutions_honeycomb_companies_routes_hc_companies_types_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete"
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete"
             ]
         }
     }
