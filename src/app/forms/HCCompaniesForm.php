@@ -2,6 +2,9 @@
 
 namespace interactivesolutions\honeycombcompanies\app\forms;
 
+use interactivesolutions\honeycombcompanies\app\models\hccompanies\HCCompaniesTypes;
+use interactivesolutions\honeycombregions\app\models\regions\HCCountries;
+
 class HCCompaniesForm
 {
     // name of the form
@@ -41,11 +44,17 @@ class HCCompaniesForm
                     "required"        => 0,
                     "requiredVisible" => 0,
                 ], [
-                    "type"            => "singleLine",
+                    "type"            => "dropDownList",
                     "fieldID"         => "country_id",
-                    "label"           => trans("HCCompanies::hc_companies.country_id"),
+                    "label"           => trans ("HCECommerceGoods::e_commerce_taxes.country_id"),
                     "required"        => 1,
                     "requiredVisible" => 1,
+                    "options"         => HCCountries::select ('id', 'translation_key')->get (),
+                    "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
+                        "showNodes"              => ["translation"],
+                    ],
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "city_id",
@@ -53,11 +62,22 @@ class HCCompaniesForm
                     "required"        => 0,
                     "requiredVisible" => 0,
                 ], [
-                    "type"            => "singleLine",
+                    "type"            => "dropDownList",
                     "fieldID"         => "type_id",
                     "label"           => trans("HCCompanies::hc_companies.type_id"),
                     "required"        => 0,
                     "requiredVisible" => 0,
+                    "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
+                        "showNodes"              => ["translation"],
+                    ],
+                    "dependencies"    => [
+                        [
+                            'field_id'    => 'country_id',
+                            "options_url" => route ('admin.api.routes.hc.companies.types.list'),
+                        ],
+                    ]
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "logo_id",
