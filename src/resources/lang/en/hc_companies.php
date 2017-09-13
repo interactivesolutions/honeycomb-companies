@@ -8,5 +8,6 @@ return [
     'type_id'    => 'Type',
     'logo_id'    => 'Logo',
     'website'    => 'Website',
+    'code'       => 'ID',
 
 ];

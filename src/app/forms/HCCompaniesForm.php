@@ -32,35 +32,17 @@ class HCCompaniesForm
             ],
             'structure'  => [
                 [
-                    "type"            => "singleLine",
-                    "fieldID"         => "name",
-                    "label"           => trans("HCCompanies::hc_companies.name"),
-                    "required"        => 1,
-                    "requiredVisible" => 1,
-                ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "vat",
-                    "label"           => trans("HCCompanies::hc_companies.vat"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
-                ], [
                     "type"            => "dropDownList",
                     "fieldID"         => "country_id",
-                    "label"           => trans ("HCECommerceGoods::e_commerce_taxes.country_id"),
+                    "label"           => trans("HCTranslations::core.country"),
                     "required"        => 1,
                     "requiredVisible" => 1,
-                    "options"         => HCCountries::select ('id', 'translation_key')->get (),
+                    "options"         => HCCountries::select('id', 'translation_key')->get(),
                     "search"          => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
                         "showNodes"              => ["translation"],
                     ],
-                ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "city_id",
-                    "label"           => trans("HCCompanies::hc_companies.city_id"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
                 ], [
                     "type"            => "dropDownList",
                     "fieldID"         => "type_id",
@@ -75,21 +57,98 @@ class HCCompaniesForm
                     "dependencies"    => [
                         [
                             'field_id'    => 'country_id',
-                            "options_url" => route ('admin.api.routes.hc.companies.types.list'),
+                            "options_url" => route('admin.api.routes.hc.companies.types.list'),
                         ],
-                    ]
+                    ],
+                ], [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "municipality_id",
+                    "label"           => trans("HCTranslations::core.municipality"),
+                    "required"        => 1,
+                    "requiredVisible" => 1,
+                    "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
+                        "showNodes"              => ["translation"],
+                    ],
+                    "dependencies"    => [
+                        [
+                            "field_id"    => "country_id",
+                            "options_url" => route('admin.api.regions.municipalities.list'),
+                        ],
+                    ],
+                ], [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "city_id",
+                    "label"           => trans("HCTranslations::core.city"),
+                    "required"        => 1,
+                    "requiredVisible" => 1,
+                    "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
+                        "showNodes"              => ["name"],
+                    ],
+                    "dependencies"    => [
+                        [
+                            "field_id"    => "municipality_id",
+                            "options_url" => route('admin.api.regions.cities.list'),
+                        ],
+                    ],
+                    "new"             => [
+                        "url"     => route('admin.api.form-manager', 'regions-cities-new'),
+                        "require" => ['municipality_id'],
+                    ],
                 ], [
                     "type"            => "singleLine",
+                    "fieldID"         => "name",
+                    "label"           => trans("HCCompanies::hc_companies.name"),
+                    "required"        => 1,
+                    "requiredVisible" => 1,
+                    "dependencies"    => [
+                        [
+                            "field_id" => "city_id",
+                        ],
+                    ],
+                ], [
+                    "type"         => "singleLine",
+                    "fieldID"      => "id",
+                    "label"        => trans("HCCompanies::hc_companies.code"),
+                    "dependencies" => [
+                        [
+                            "field_id" => "city_id",
+                        ],
+                    ],
+                ], [
+                    "type"         => "singleLine",
+                    "fieldID"      => "vat",
+                    "label"        => trans("HCCompanies::hc_companies.vat"),
+                    "dependencies" => [
+                        [
+                            "field_id" => "city_id",
+                        ],
+                    ],
+                ], [
+                    "type"            => "resource",
                     "fieldID"         => "logo_id",
                     "label"           => trans("HCCompanies::hc_companies.logo_id"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
+                    "uploadURL"       => route("admin.api.resources"),
+                    "viewURL"         => route("resource.get", ['/']),
+                    "fileCount"       => 1,
+                    "uploadDataTypes" => ["image/jpg", "image/jpeg", "image/png", "image/svg+xml"],
+                    "dependencies"    => [
+                        [
+                            "field_id" => "city_id",
+                        ],
+                    ],
                 ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "website",
-                    "label"           => trans("HCCompanies::hc_companies.website"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
+                    "type"         => "singleLine",
+                    "fieldID"      => "website",
+                    "label"        => trans("HCCompanies::hc_companies.website"),
+                    "dependencies" => [
+                        [
+                            "field_id" => "city_id",
+                        ],
+                    ],
                 ],
             ],
         ];
