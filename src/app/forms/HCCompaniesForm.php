@@ -35,6 +35,7 @@ class HCCompaniesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "country_id",
                     "label"           => trans("HCTranslations::core.country"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "options"         => HCCountries::select('id', 'translation_key')->get(),
@@ -47,8 +48,7 @@ class HCCompaniesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "type_id",
                     "label"           => trans("HCCompanies::hc_companies.type_id"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "search"          => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
@@ -64,9 +64,10 @@ class HCCompaniesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "municipality_id",
                     "label"           => trans("HCTranslations::core.municipality"),
-                    "required"        => 1,
-                    "requiredVisible" => 1,
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
                         "showNodes"              => ["translation"],
                     ],
                     "dependencies"    => [
@@ -79,9 +80,10 @@ class HCCompaniesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "city_id",
                     "label"           => trans("HCTranslations::core.city"),
-                    "required"        => 1,
-                    "requiredVisible" => 1,
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "search"          => [
+                        "maximumSelectionLength" => 1,
+                        "minimumSelectionLength" => 1,
                         "showNodes"              => ["name"],
                     ],
                     "dependencies"    => [
@@ -98,6 +100,7 @@ class HCCompaniesForm
                     "type"            => "singleLine",
                     "fieldID"         => "name",
                     "label"           => trans("HCCompanies::hc_companies.name"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "dependencies"    => [
@@ -109,6 +112,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "id",
                     "label"        => trans("HCCompanies::hc_companies.code"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
@@ -118,6 +122,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "vat",
                     "label"        => trans("HCCompanies::hc_companies.vat"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
@@ -127,6 +132,7 @@ class HCCompaniesForm
                     "type"            => "resource",
                     "fieldID"         => "logo_id",
                     "label"           => trans("HCCompanies::hc_companies.logo_id"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "uploadURL"       => route("admin.api.resources"),
                     "viewURL"         => route("resource.get", ['/']),
                     "fileCount"       => 1,
@@ -140,6 +146,7 @@ class HCCompaniesForm
                     "type"         => "singleLine",
                     "fieldID"      => "website",
                     "label"        => trans("HCCompanies::hc_companies.website"),
+                    "tabID"           => trans("HCTranslations::core.general"),
                     "dependencies" => [
                         [
                             "field_id" => "country_id",
