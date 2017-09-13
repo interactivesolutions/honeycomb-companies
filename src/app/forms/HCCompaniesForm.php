@@ -67,8 +67,6 @@ class HCCompaniesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "search"          => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
                         "showNodes"              => ["translation"],
                     ],
                     "dependencies"    => [
@@ -84,8 +82,6 @@ class HCCompaniesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "search"          => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
                         "showNodes"              => ["name"],
                     ],
                     "dependencies"    => [
