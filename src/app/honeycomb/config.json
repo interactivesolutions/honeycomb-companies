@@ -1,21 +1,40 @@
 {
-    "general":
-    {
+    "general": {
         "serviceProviderNameSpace": "HCCompanies"
     },
-    "formData":
-    [
+    "formData": {
+        "hc-companies": "interactivesolutions\\honeycombcompanies\\app\\forms\\HCCompaniesForm"
+    },
+    "adminMenu": [
+        {
+            "route": "admin.routes.hc.companies.index",
+            "translation": "HCCompanies::hc_companies.page_title",
+            "icon": "fa-building-o",
+            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+            "priority": 10
+        }
     ],
-    "adminMenu":
-    [
-    ],
-    "acl":
-    {
-        "permissions" :
-        [
+    "acl": {
+        "permissions": [
+            {
+                "name": "admin.routes.hc.companies",
+                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\HCCompaniesController",
+                "actions": [
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_delete",
+                    "interactivesolutions_honeycomb_companies_routes_hc_companies_force_delete"
+                ]
+            }
         ],
-        "rolesActions" :
-        [
-        ]
+        "rolesActions": {
+            "project-admin": [
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
+                "interactivesolutions_honeycomb_companies_routes_hc_companies_delete"
+            ]
+        }
     }
 }
