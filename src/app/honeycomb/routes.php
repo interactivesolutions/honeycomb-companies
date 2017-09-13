@@ -64,6 +64,38 @@ Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth'
 });
 
 
+//src/app/routes//admin/04_routes.hc.companies.employees.php
+
+
+Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function ()
+{
+    Route::get('hc-companies/employees', ['as' => 'admin.routes.hc.companies.employees.index', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@adminIndex']);
+
+    Route::group(['prefix' => 'api/hc-companies/employees'], function ()
+    {
+        Route::get('/', ['as' => 'admin.api.routes.hc.companies.employees', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiIndexPaginate']);
+        Route::post('/', ['middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiStore']);
+        Route::delete('/', ['middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDestroy']);
+
+        Route::get('list', ['as' => 'admin.api.routes.hc.companies.employees.list', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiIndex']);
+        Route::post('restore', ['as' => 'admin.api.routes.hc.companies.employees.restore', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiRestore']);
+        Route::post('merge', ['as' => 'api.v1.routes.hc.companies.employees.merge', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create', 'acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiMerge']);
+        Route::delete('force', ['as' => 'admin.api.routes.hc.companies.employees.force', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiForceDelete']);
+
+        Route::group(['prefix' => '{id}'], function ()
+        {
+            Route::get('/', ['as' => 'admin.api.routes.hc.companies.employees.single', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiShow']);
+            Route::put('/', ['middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiUpdate']);
+            Route::delete('/', ['middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDestroy']);
+
+            Route::put('strict', ['as' => 'admin.api.routes.hc.companies.employees.update.strict', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiUpdateStrict']);
+            Route::post('duplicate', ['as' => 'admin.api.routes.hc.companies.employees.duplicate.single', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list', 'acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDuplicate']);
+            Route::delete('force', ['as' => 'admin.api.routes.hc.companies.employees.force.single', 'middleware' => ['acl:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiForceDelete']);
+        });
+    });
+});
+
+
 //src/app/routes//admin/99_routes.hc.companies.php
 
 
@@ -160,6 +192,40 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function ()
             Route::put('strict', ['as' => 'api.v1.routes.hc.companies.positions.update.strict', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update'], 'uses' => 'hccompanies\\HCCompaniesPositionsController@apiUpdateStrict']);
             Route::post('duplicate', ['as' => 'api.v1.routes.hc.companies.positions.duplicate.single', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list', 'acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create'], 'uses' => 'hccompanies\\HCCompaniesPositionsController@apiDuplicate']);
             Route::delete('force', ['as' => 'api.v1.routes.hc.companies.positions.force.single', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_positions_force_delete'], 'uses' => 'hccompanies\\HCCompaniesPositionsController@apiForceDelete']);
+        });
+    });
+});
+
+//src/app/routes//api/04_routes.hc.companies.employees.php
+
+
+Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function ()
+{
+    Route::group(['prefix' => 'v1/hc-companies/employees'], function ()
+    {
+        Route::get('/', ['as' => 'api.v1.routes.hc.companies.employees', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiIndexPaginate']);
+        Route::post('/', ['middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiStore']);
+        Route::delete('/', ['middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDestroy']);
+
+        Route::group(['prefix' => 'list'], function ()
+        {
+            Route::get('/', ['as' => 'api.v1.routes.hc.companies.employees.list', 'middleware' => ['acl-apps:api_v1_interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiList']);
+            Route::get('{timestamp}', ['as' => 'api.v1.routes.hc.companies.employees.list.update', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiIndexSync']);
+        });
+
+        Route::post('restore', ['as' => 'api.v1.routes.hc.companies.employees.restore', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiRestore']);
+        Route::post('merge', ['as' => 'api.v1.routes.hc.companies.employees.merge', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create', 'acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiMerge']);
+        Route::delete('force', ['as' => 'api.v1.routes.hc.companies.employees.force', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiForceDelete']);
+
+        Route::group(['prefix' => '{id}'], function ()
+        {
+            Route::get('/', ['as' => 'api.v1.routes.hc.companies.employees.single', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiShow']);
+            Route::put('/', ['middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiUpdate']);
+            Route::delete('/', ['middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDestroy']);
+
+            Route::put('strict', ['as' => 'api.v1.routes.hc.companies.employees.update.strict', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiUpdateStrict']);
+            Route::post('duplicate', ['as' => 'api.v1.routes.hc.companies.employees.duplicate.single', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list', 'acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiDuplicate']);
+            Route::delete('force', ['as' => 'api.v1.routes.hc.companies.employees.force.single', 'middleware' => ['acl-apps:interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete'], 'uses' => 'hccompanies\\HCCompaniesEmployeesController@apiForceDelete']);
         });
     });
 });

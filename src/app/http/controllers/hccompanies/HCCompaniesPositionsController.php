@@ -222,9 +222,9 @@ class HCCompaniesPositionsController extends HCBaseController
 
         $translations = array_get($_data, 'translations');
 
-        foreach ($translations as &$value)
+        /*foreach ($translations as &$value)
             if (!isset($value['slug']) || $value['slug'] == "")
-                $value['slug'] = generateHCSlug("hc-companies/positions", $value['label']);
+                $value['slug'] = generateHCSlug("hc-companies/positions", $value['label']);*/
 
         array_set($data, 'translations', $translations);
 
