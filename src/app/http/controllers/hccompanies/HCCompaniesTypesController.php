@@ -57,6 +57,10 @@ class HCCompaniesTypesController extends HCBaseController
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_types.country_id'),
             ],
+            'short_name'        => [
+                "type"  => "text",
+                "label" => trans('HCCompanies::hc_companies_types.name'),
+            ],
             'translations.{lang}.name'        => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_types.name'),
@@ -224,6 +228,7 @@ class HCCompaniesTypesController extends HCBaseController
             array_set($data, 'record.id', array_get($_data, 'id'));
 
         array_set($data, 'record.country_id', array_get($_data, 'country_id'));
+        array_set($data, 'record.short_name', array_get($_data, 'short_name'));
 
         $translations = array_get($_data, 'translations');
 

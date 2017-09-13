@@ -4,5 +4,6 @@ return [
     'country_id'  => 'Country',
     'name'        => 'Name',
     'description' => 'Description',
+    'short_name'  => 'Short name',
 
 ];

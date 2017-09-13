@@ -1,6 +1,6 @@
 <?php
 return [
-    'page_title' => 'HCCompanies',
+    'page_title' => 'Companies',
     'name'       => 'Name',
     'vat'        => 'Vat',
     'country_id' => 'Country',
