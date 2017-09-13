@@ -12,6 +12,6 @@ class HoneyCombDatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        $this->call(HCCompaniesTypesSeeder::class);
     }
 }

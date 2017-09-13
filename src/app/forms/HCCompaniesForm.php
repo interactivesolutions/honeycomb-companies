@@ -70,7 +70,7 @@ class HCCompaniesForm
                     "search"          => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
-                        "showNodes"              => ["translation"],
+                        "showNodes"              => ["short_name"],
                     ],
                     "dependencies"    => [
                         [

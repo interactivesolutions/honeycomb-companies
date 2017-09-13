@@ -19,6 +19,7 @@ class CreateHcCompaniesTypesTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('country_id', 36)->index('fk_hc_companies_types_hc_regions_countries1_idx');
+            $table->string('short_name', 45);
 		});
 	}
 

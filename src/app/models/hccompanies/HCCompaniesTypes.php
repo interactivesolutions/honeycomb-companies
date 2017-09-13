@@ -18,6 +18,6 @@ class HCCompaniesTypes extends HCMultiLanguageModel
      *
      * @var array
      */
-    protected $fillable = ['id', 'country_id'];
+    protected $fillable = ['id', 'country_id', 'short_name'];
 
 }
