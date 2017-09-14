@@ -4,15 +4,13 @@ namespace interactivesolutions\honeycombcompanies\app\http\controllers\hccompani
 
 use Illuminate\Database\Eloquent\Builder;
 use interactivesolutions\honeycombacl\app\models\HCUsers;
+use interactivesolutions\honeycombcompanies\app\models\HCCompanies;
 use interactivesolutions\honeycombcore\http\controllers\HCBaseController;
 use interactivesolutions\honeycombcompanies\app\models\hccompanies\HCCompaniesEmployees;
 use interactivesolutions\honeycombcompanies\app\validators\hccompanies\HCCompaniesEmployeesValidator;
 
 class HCCompaniesEmployeesController extends HCBaseController
 {
-
-    //TODO recordsPerPage setting
-
     /**
      * Returning configured admin view
      *
@@ -54,27 +52,27 @@ class HCCompaniesEmployeesController extends HCBaseController
     public function getAdminListHeader ()
     {
         return [
-            'country.translation'      => [
+            'country.translation'        => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.country_id'),
             ],
-            'company.name'      => [
+            'company.name'               => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.company_id'),
             ],
-            'email'         => [
+            'email'                      => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.email'),
             ],
-            'name'            => [
+            'name'                       => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.name'),
             ],
-            'surname'         => [
+            'surname'                    => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.surname'),
             ],
-            'position.translation.title'     => [
+            'position.translation.title' => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies_employees.position_id'),
             ]/*,
@@ -101,20 +99,17 @@ class HCCompaniesEmployeesController extends HCBaseController
         $data = $this->getInputData();
         $email = array_get($data, 'record.email');
 
-        if (strpos($email, '@') !== false)
-        {
+        if (strpos($email, '@') !== false) {
             $user = HCUsers::where('email', $email)->first();
 
             // checking if hc user exists
-            if ($user)
-            {
+            if ($user) {
                 $user = HCCompaniesEmployees::where('user_id', $user->id)->first();
 
                 if ($user)
                     throw new \Exception('Employee already exists!');
-            }
-            else
-                $user = createHCUser($email, [],true, null, [], false, false);
+            } else
+                $user = createHCUser($email, [], true, null, [], false, false);
 
             array_set($data, 'record.user_id', $user->id);
         }
@@ -240,6 +235,8 @@ class HCCompaniesEmployeesController extends HCBaseController
                 ->orWhere('position_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('country_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('municipality_id', 'LIKE', '%' . $phrase . '%')
+                ->orWhere('phone', 'LIKE', '%' . $phrase . '%')
+                ->orWhere('fax', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('city_id', 'LIKE', '%' . $phrase . '%');
         });
     }
@@ -260,6 +257,7 @@ class HCCompaniesEmployeesController extends HCBaseController
 
         array_set($data, 'record.company_id', array_get($_data, 'company_id'));
         array_set($data, 'record.user_id', array_get($_data, 'user_id'));
+        array_set($data, 'record.email', array_get($_data, 'email'));
         array_set($data, 'record.name', array_get($_data, 'name'));
         array_set($data, 'record.surname', array_get($_data, 'surname'));
         array_set($data, 'record.position_id', array_get($_data, 'position_id'));
@@ -300,6 +298,16 @@ class HCCompaniesEmployeesController extends HCBaseController
     public function getFilters ()
     {
         $filters = [];
+
+        $companies = [
+            'fieldID'   => 'company_id',
+            'type'      => 'dropDownList',
+            "label"     => trans("HCCompanies::hc_companies_employees.company_id"),
+            'options'   => HCCompanies::all()->toArray(),
+            'showNodes' => ['name'],
+        ];
+
+        $filters[] = addAllOptionToDropDownList($companies);
 
         return $filters;
     }
