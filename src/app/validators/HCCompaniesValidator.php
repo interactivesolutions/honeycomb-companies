@@ -14,6 +14,7 @@ class HCCompaniesValidator extends HCCoreFormValidator
         return [
             'name'       => 'required',
             'country_id' => 'required',
+            'id'         => 'required',
 
         ];
     }

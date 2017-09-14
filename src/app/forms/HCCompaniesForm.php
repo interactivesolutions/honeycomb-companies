@@ -111,6 +111,8 @@ class HCCompaniesForm
                 ], [
                     "type"         => "singleLine",
                     "fieldID"      => "id",
+                    "required"        => 1,
+                    "requiredVisible" => 1,
                     "label"        => trans("HCCompanies::hc_companies.code"),
                     "tabID"        => trans("HCTranslations::core.general"),
                     "dependencies" => [
