@@ -14,7 +14,8 @@ class AddForeignKeysToHcCompaniesPositionsTranslationsTable extends Migration {
 	{
 		Schema::table('hc_companies_positions_translations', function(Blueprint $table)
 		{
-			$table->foreign('record_id', 'fk_hc_companies_positions_translations_hc_companies_positions1')->references('iso_639_1')->on('hc_companies_positions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('record_id', 'fk_hc_companies_positions_translations_hc_companies_positions1')->references('id')->on('hc_companies_positions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('language_code', 'fk_hc_companies_positions_translations_hc_languages1')->references('iso_639_1')->on('hc_languages')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,6 +30,7 @@ class AddForeignKeysToHcCompaniesPositionsTranslationsTable extends Migration {
 		Schema::table('hc_companies_positions_translations', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_hc_companies_positions_translations_hc_companies_positions1');
+			$table->dropForeign('fk_hc_companies_positions_translations_hc_languages1');
 		});
 	}
 
