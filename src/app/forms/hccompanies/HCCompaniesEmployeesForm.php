@@ -113,13 +113,13 @@ class HCCompaniesEmployeesForm
                     ],
                     "dependencies" => [
                         [
-                            "field_id"    => "municipality_id",
+                            "field_id"    => "country_id",
                             "options_url" => route('admin.api.regions.cities.list'),
                         ],
                     ],
                     "new"          => [
                         "url"     => route('admin.api.form-manager', 'regions-cities-new'),
-                        "require" => ['municipality_id'],
+                        "require" => ['country_id'],
                     ],
                 ], [
                     "type"    => "singleLine",
