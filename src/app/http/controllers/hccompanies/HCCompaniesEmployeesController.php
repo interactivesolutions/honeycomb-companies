@@ -104,9 +104,9 @@ class HCCompaniesEmployeesController extends HCBaseController
 
             // checking if hc user exists
             if ($user) {
-                $user = HCCompaniesEmployees::where('user_id', $user->id)->first();
+                $employee = HCCompaniesEmployees::where('user_id', $user->id)->first();
 
-                if ($user)
+                if ($employee)
                     throw new \Exception('Employee already exists!');
             } else
                 $user = createHCUser($email, [], true, null, [], false, false);
