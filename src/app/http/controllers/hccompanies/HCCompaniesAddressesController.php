@@ -246,6 +246,8 @@ class HCCompaniesAddressesController extends HCBaseController
         array_set($data, 'record.city_id', array_get($_data, 'city_id'));
         array_set($data, 'record.street', array_get($_data, 'street'));
         array_set($data, 'record.zip', array_get($_data, 'zip'));
+        array_set($data, 'record.phone', array_get($_data, 'phone'));
+        array_set($data, 'record.fax', array_get($_data, 'fax'));
 
         return makeEmptyNullable($data);
     }

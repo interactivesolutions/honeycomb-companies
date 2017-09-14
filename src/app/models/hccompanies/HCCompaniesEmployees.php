@@ -21,7 +21,7 @@ class HCCompaniesEmployees extends HCUuidModel
      *
      * @var array
      */
-    protected $fillable = ['id', 'company_id', 'user_id', 'name', 'surname', 'position_id', 'country_id', 'municipality_id', 'city_id'];
+    protected $fillable = ['id', 'company_id', 'user_id', 'name', 'surname', 'position_id', 'country_id', 'municipality_id', 'city_id', 'phone', 'fax'];
 
     protected $appends = ['email'];
 

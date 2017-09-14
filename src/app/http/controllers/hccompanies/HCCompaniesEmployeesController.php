@@ -266,6 +266,8 @@ class HCCompaniesEmployeesController extends HCBaseController
         array_set($data, 'record.country_id', array_get($_data, 'country_id'));
         array_set($data, 'record.municipality_id', array_get($_data, 'municipality_id'));
         array_set($data, 'record.city_id', array_get($_data, 'city_id'));
+        array_set($data, 'record.phone', array_get($_data, 'phone'));
+        array_set($data, 'record.fax', array_get($_data, 'fax'));
 
         return makeEmptyNullable($data);
     }

@@ -118,7 +118,15 @@ class HCCompaniesEmployeesForm
                         "url"     => route('admin.api.form-manager', 'regions-cities-new'),
                         "require" => ['municipality_id'],
                     ],
-                ]
+                ], [
+                    "type"            => "singleLine",
+                    "fieldID"         => "phone",
+                    "label"           => trans("HCTranslations::core.phone"),
+                ], [
+                    "type"            => "singleLine",
+                    "fieldID"         => "fax",
+                    "label"           => trans("HCTranslations::core.fax"),
+                ],
             ],
         ];
 

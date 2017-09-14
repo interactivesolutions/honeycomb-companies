@@ -128,14 +128,18 @@ class HCCompaniesAddressesForm
                     "type"            => "singleLine",
                     "fieldID"         => "street",
                     "label"           => trans("HCCompanies::hc_companies_addresses.street"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "zip",
                     "label"           => trans("HCCompanies::hc_companies_addresses.zip"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
+                ], [
+                    "type"            => "singleLine",
+                    "fieldID"         => "phone",
+                    "label"           => trans("HCTranslations::core.phone"),
+                ], [
+                    "type"            => "singleLine",
+                    "fieldID"         => "fax",
+                    "label"           => trans("HCTranslations::core.fax"),
                 ],
             ],
         ];
