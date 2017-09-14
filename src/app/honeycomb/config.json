@@ -21,7 +21,7 @@
         {
             "route": "admin.routes.hc.companies.types.index",
             "translation": "HCCompanies::hc_companies_types.page_title",
-            "icon": "",
+            "icon": "fa-tag",
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
             "parent": "admin.routes.hc.companies.index",
             "priority": 10
@@ -29,7 +29,7 @@
         {
             "route": "admin.routes.hc.companies.positions.index",
             "translation": "HCCompanies::hc_companies_positions.page_title",
-            "icon": "",
+            "icon": "fa-eye",
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
             "parent": "admin.routes.hc.companies.index",
             "priority": 11
@@ -37,7 +37,7 @@
         {
             "route": "admin.routes.hc.companies.employees.index",
             "translation": "HCCompanies::hc_companies_employees.page_title",
-            "icon": "",
+            "icon": "fa-user",
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
             "parent": "admin.routes.hc.companies.index",
             "priority": 12
@@ -45,7 +45,7 @@
         {
             "route": "admin.routes.hc.companies.addresses.types.index",
             "translation": "HCCompanies::hc_companies_addresses_types.page_title",
-            "icon": "",
+            "icon": "fa-tag",
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
             "parent": "admin.routes.hc.companies.addresses.index",
             "priority": 10
@@ -53,7 +53,7 @@
         {
             "route": "admin.routes.hc.companies.addresses.index",
             "translation": "HCCompanies::hc_companies_addresses.page_title",
-            "icon": "",
+            "icon": "fa-address-book-o",
             "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
             "parent": "admin.routes.hc.companies.index",
             "priority": 13
