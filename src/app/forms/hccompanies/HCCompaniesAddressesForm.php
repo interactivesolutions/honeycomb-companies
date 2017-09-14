@@ -57,6 +57,9 @@ class HCCompaniesAddressesForm
                         "minimumSelectionLength" => 1,
                         "showNodes" => ['translations.{lang}.title']
                     ],
+                    "new" => [
+                        "url"     => route('admin.api.form-manager', 'hc-companies-addresses-types-new'),
+                    ]
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "title",

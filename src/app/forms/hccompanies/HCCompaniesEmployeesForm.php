@@ -42,7 +42,7 @@ class HCCompaniesEmployeesForm
                     "search"          => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
-                        "showNodes" => ['name']
+                        "showNodes"              => ['name'],
                     ],
                 ], [
                     "type"            => "email",
@@ -57,9 +57,9 @@ class HCCompaniesEmployeesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                 ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "surname",
-                    "label"           => trans("HCCompanies::hc_companies_employees.surname"),
+                    "type"    => "singleLine",
+                    "fieldID" => "surname",
+                    "label"   => trans("HCCompanies::hc_companies_employees.surname"),
                 ], [
                     "type"            => "dropDownList",
                     "fieldID"         => "position_id",
@@ -70,7 +70,10 @@ class HCCompaniesEmployeesForm
                     "search"          => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
-                        "showNodes" => ['translations.{lang}.title']
+                        "showNodes"              => ['translations.{lang}.title'],
+                    ],
+                    "new"             => [
+                        "url"     => route('admin.api.form-manager', 'hc-companies-positions-new')
                     ],
                 ], [
                     "type"            => "dropDownList",
@@ -119,13 +122,13 @@ class HCCompaniesEmployeesForm
                         "require" => ['municipality_id'],
                     ],
                 ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "phone",
-                    "label"           => trans("HCTranslations::core.phone"),
+                    "type"    => "singleLine",
+                    "fieldID" => "phone",
+                    "label"   => trans("HCTranslations::core.phone"),
                 ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "fax",
-                    "label"           => trans("HCTranslations::core.fax"),
+                    "type"    => "singleLine",
+                    "fieldID" => "fax",
+                    "label"   => trans("HCTranslations::core.fax"),
                 ],
             ],
         ];
