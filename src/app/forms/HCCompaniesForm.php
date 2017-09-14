@@ -62,22 +62,6 @@ class HCCompaniesForm
                     ],
                 ], [
                     "type"         => "dropDownList",
-                    "fieldID"      => "municipality_id",
-                    "label"        => trans("HCTranslations::core.municipality"),
-                    "tabID"        => trans("HCTranslations::core.general"),
-                    "search"       => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
-                        "showNodes"              => ["translation"],
-                    ],
-                    "dependencies" => [
-                        [
-                            "field_id"    => "country_id",
-                            "options_url" => route('admin.api.regions.municipalities.list'),
-                        ],
-                    ],
-                ], [
-                    "type"         => "dropDownList",
                     "fieldID"      => "city_id",
                     "label"        => trans("HCTranslations::core.city"),
                     "tabID"        => trans("HCTranslations::core.general"),
@@ -88,13 +72,13 @@ class HCCompaniesForm
                     ],
                     "dependencies" => [
                         [
-                            "field_id"    => "municipality_id",
+                            "field_id"    => "country_id",
                             "options_url" => route('admin.api.regions.cities.list'),
                         ],
                     ],
                     "new"          => [
                         "url"     => route('admin.api.form-manager', 'regions-cities-new'),
-                        "require" => ['municipality_id'],
+                        "require" => ['country_id'],
                     ],
                 ], [
                     "type"            => "singleLine",

@@ -95,21 +95,6 @@ class HCCompaniesAddressesForm
                     ],
                 ], [
                     "type"         => "dropDownList",
-                    "fieldID"      => "municipality_id",
-                    "label"        => trans("HCTranslations::core.municipality"),
-                    "search"       => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
-                        "showNodes"              => ["translation"],
-                    ],
-                    "dependencies" => [
-                        [
-                            "field_id"    => "country_id",
-                            "options_url" => route('admin.api.regions.municipalities.list'),
-                        ],
-                    ],
-                ], [
-                    "type"         => "dropDownList",
                     "fieldID"      => "city_id",
                     "label"        => trans("HCTranslations::core.city"),
                     "search"       => [
@@ -119,7 +104,7 @@ class HCCompaniesAddressesForm
                     ],
                     "dependencies" => [
                         [
-                            "field_id"    => "municipality_id",
+                            "field_id"    => "country_id",
                             "options_url" => route('admin.api.regions.cities.list'),
                         ],
                     ],
@@ -130,6 +115,8 @@ class HCCompaniesAddressesForm
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "street",
+                    "required"        => 1,
+                    "requiredVisible" => 1,
                     "label"           => trans("HCCompanies::hc_companies_addresses.street"),
                 ], [
                     "type"            => "singleLine",
