@@ -40,6 +40,7 @@ class HCCompaniesEmployeesController extends HCBaseController
 
         $config['actions'][] = 'search';
         $config['filters'] = $this->getFilters();
+        $config['popUpLabel'] = 'name';
 
         return hcview('HCCoreUI::admin.content.list', ['config' => $config]);
     }
@@ -110,6 +111,7 @@ class HCCompaniesEmployeesController extends HCBaseController
         }
 
         $record = HCCompaniesEmployees::create(array_get($data, 'record'));
+        $record->addresses()->sync(array_get($data, 'addresses'));
 
         return $this->apiShow($record->id);
     }
@@ -127,6 +129,7 @@ class HCCompaniesEmployeesController extends HCBaseController
         $data = $this->getInputData();
 
         $record->update(array_get($data, 'record', []));
+        $record->addresses()->sync(array_get($data, 'addresses'));
 
         return $this->apiShow($record->id);
     }
@@ -191,7 +194,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      */
     protected function createQuery (array $select = null)
     {
-        $with = [];
+        $with = ['addresses'];
 
         if ($select == null)
             $select = HCCompaniesEmployees::getFillableFields();
@@ -264,6 +267,11 @@ class HCCompaniesEmployeesController extends HCBaseController
         array_set($data, 'record.fax', array_get($_data, 'fax'));
         array_set($data, 'record.birthday', array_get($_data, 'birthday'));
 
+        array_set($data, 'addresses', array_get($_data, 'addresses'));
+
+        if (!$data['addresses'])
+            $data['addresses'] = [];
+
         return makeEmptyNullable($data);
     }
 
@@ -275,7 +283,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      */
     public function apiShow (string $id)
     {
-        $with = [];
+        $with = ['addresses'];
 
         $select = HCCompaniesEmployees::getFillableFields();
 

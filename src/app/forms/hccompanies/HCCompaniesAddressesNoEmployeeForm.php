@@ -7,10 +7,10 @@ use interactivesolutions\honeycombcompanies\app\models\hccompanies\HCCompaniesAd
 use interactivesolutions\honeycombcompanies\app\models\hccompanies\HCCompaniesEmployees;
 use interactivesolutions\honeycombregions\app\models\regions\HCCountries;
 
-class HCCompaniesAddressesForm
+class HCCompaniesAddressesNoEmployeeForm
 {
     // name of the form
-    protected $formID = 'hc-companies-addresses';
+    protected $formID = 'hc-companies-just-addresses';
 
     // is form multi language
     protected $multiLanguage = 0;
@@ -69,21 +69,6 @@ class HCCompaniesAddressesForm
                     "label"           => trans("HCCompanies::hc_companies_addresses.title"),
                     "required"        => 1,
                     "requiredVisible" => 1,
-                ], [
-                    "type"            => "dropDownList",
-                    "fieldID"         => "employee_id",
-                    "label"           => trans("HCCompanies::hc_companies_addresses.employee_id"),
-                    "search"          => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
-                        "showNodes" => ['name', 'surname']
-                    ],
-                    "dependencies" => [
-                        [
-                            "field_id"    => "company_id",
-                            "options_url" => route('admin.api.routes.hc.companies.employees.list'),
-                        ],
-                    ],
                 ], [
                     "type"            => "dropDownList",
                     "fieldID"         => "country_id",

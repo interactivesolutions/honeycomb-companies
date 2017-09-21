@@ -76,4 +76,9 @@ class HCCompaniesEmployees extends HCUuidModel
     {
         return $this->user->email;
     }
+
+    public function addresses ()
+    {
+        return $this->belongsToMany(HCCompaniesAddresses::class, 'hc_companies_employee_addresses', 'employee_id', 'address_id');
+    }
 }

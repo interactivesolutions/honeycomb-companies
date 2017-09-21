@@ -8,7 +8,8 @@
         "hc-companies-positions": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesPositionsForm",
         "hc-companies-employees": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesEmployeesForm",
         "hc-companies-addresses-types": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesTypesForm",
-        "hc-companies-addresses": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesForm"
+        "hc-companies-addresses": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesForm",
+        "hc-companies-just-addresses": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesNoEmployeeForm"
     },
     "adminMenu": [
         {

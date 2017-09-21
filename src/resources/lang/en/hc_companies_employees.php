@@ -9,5 +9,6 @@ return [
     'country_id'      => 'Country',
     'municipality_id' => 'Municipality',
     'city_id'         => 'City',
+    'addresses'       => 'Addresses',
 
 ];

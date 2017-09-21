@@ -41,6 +41,7 @@ class HCCompaniesAddressesController extends HCBaseController
 
         $config['actions'][] = 'search';
         $config['filters'] = $this->getFilters();
+        $config['popUpLabel'] = 'street';
 
         return hcview('HCCoreUI::admin.content.list', ['config' => $config]);
     }

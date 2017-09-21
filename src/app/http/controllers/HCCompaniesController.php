@@ -41,6 +41,7 @@ class HCCompaniesController extends HCBaseController
 
         $config['actions'][] = 'search';
         $config['filters'] = $this->getFilters();
+        $config['popUpLabel'] = 'name';
 
         return hcview('HCCoreUI::admin.content.list', ['config' => $config]);
     }
