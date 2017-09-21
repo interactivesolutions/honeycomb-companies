@@ -129,6 +129,13 @@ class HCCompaniesEmployeesForm
                     "type"    => "singleLine",
                     "fieldID" => "fax",
                     "label"   => trans("HCTranslations::core.fax"),
+                ], [
+                    "type"    => "dateTimePicker",
+                    "fieldID" => "birthday",
+                    "label"   => trans("HCTranslations::core.birthday"),
+                    "properties" => [
+                        "format" => "Y-MM-DD",
+                    ],
                 ],
             ],
         ];

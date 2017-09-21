@@ -232,6 +232,7 @@ class HCCompaniesEmployeesController extends HCBaseController
                 ->orWhere('municipality_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('phone', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('fax', 'LIKE', '%' . $phrase . '%')
+                ->orWhere('birthday', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('city_id', 'LIKE', '%' . $phrase . '%');
         });
     }
@@ -261,6 +262,7 @@ class HCCompaniesEmployeesController extends HCBaseController
         array_set($data, 'record.city_id', array_get($_data, 'city_id'));
         array_set($data, 'record.phone', array_get($_data, 'phone'));
         array_set($data, 'record.fax', array_get($_data, 'fax'));
+        array_set($data, 'record.birthday', array_get($_data, 'birthday'));
 
         return makeEmptyNullable($data);
     }
