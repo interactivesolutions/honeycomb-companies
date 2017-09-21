@@ -101,6 +101,15 @@ class HCCompaniesAddressesNoEmployeeForm
                         "require" => ['municipality_id'],
                     ],
                 ], [
+                    "type"            => 'dropDownList',
+                    "fieldID"         => 'remote_location',
+                    "label"           => trans("HCCompanies::hc_companies_addresses.remote_location"),
+                    "options"         => [
+                        ['id' => '1', 'label' => trans('HCTranslations::core.yes')],
+                        ['id' => '0', 'label' => trans('HCTranslations::core.no')],
+                    ],
+                    "value"           => '0',
+                ], [
                     "type"            => "singleLine",
                     "fieldID"         => "street",
                     "required"        => 1,

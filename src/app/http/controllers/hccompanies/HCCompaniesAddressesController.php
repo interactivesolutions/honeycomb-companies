@@ -249,6 +249,7 @@ class HCCompaniesAddressesController extends HCBaseController
         array_set($data, 'record.zip', array_get($_data, 'zip'));
         array_set($data, 'record.phone', array_get($_data, 'phone'));
         array_set($data, 'record.fax', array_get($_data, 'fax'));
+        array_set($data, 'record.remote_location', array_get($_data, 'remote_location'));
 
         return makeEmptyNullable($data);
     }
