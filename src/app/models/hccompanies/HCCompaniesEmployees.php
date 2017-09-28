@@ -79,6 +79,6 @@ class HCCompaniesEmployees extends HCUuidModel
 
     public function addresses ()
     {
-        return $this->belongsToMany(HCCompaniesAddresses::class, 'hc_companies_employee_addresses', 'employee_id', 'address_id');
+        return $this->belongsToMany(HCCompaniesAddresses::class, 'hc_companies_employee_addresses', 'employee_id', 'address_id')->withPivot('count')->orderBy("hc_companies_employee_addresses.count");
     }
 }

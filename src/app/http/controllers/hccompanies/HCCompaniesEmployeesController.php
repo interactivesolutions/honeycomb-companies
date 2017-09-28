@@ -111,7 +111,6 @@ class HCCompaniesEmployeesController extends HCBaseController
         }
 
         $record = HCCompaniesEmployees::create(array_get($data, 'record'));
-        $record->addresses()->sync(array_get($data, 'addresses'));
 
         return $this->apiShow($record->id);
     }
@@ -129,6 +128,7 @@ class HCCompaniesEmployeesController extends HCBaseController
         $data = $this->getInputData();
 
         $record->update(array_get($data, 'record', []));
+        $record->addresses()->detach();
         $record->addresses()->sync(array_get($data, 'addresses'));
 
         return $this->apiShow($record->id);
@@ -271,6 +271,8 @@ class HCCompaniesEmployeesController extends HCBaseController
 
         if (!$data['addresses'])
             $data['addresses'] = [];
+
+        //dd($data['addresses']);
 
         return makeEmptyNullable($data);
     }

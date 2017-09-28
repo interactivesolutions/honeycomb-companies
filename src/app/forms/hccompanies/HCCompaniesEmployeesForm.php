@@ -179,6 +179,7 @@ class HCCompaniesEmployeesForm
                 "url"     => route('admin.api.form-manager', 'hc-companies-just-addresses-new'),
                 "require" => ['company_id'],
             ],
+            "sortable" => 1
         ];
 
         return $form;
