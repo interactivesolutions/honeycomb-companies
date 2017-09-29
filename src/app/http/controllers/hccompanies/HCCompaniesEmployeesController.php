@@ -194,7 +194,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      */
     protected function createQuery (array $select = null)
     {
-        $with = ['addresses'];
+        $with = ['addresses', 'company', 'position', 'country'];
 
         if ($select == null)
             $select = HCCompaniesEmployees::getFillableFields();
@@ -272,8 +272,6 @@ class HCCompaniesEmployeesController extends HCBaseController
         if (!$data['addresses'])
             $data['addresses'] = [];
 
-        //dd($data['addresses']);
-
         return makeEmptyNullable($data);
     }
 
@@ -285,7 +283,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      */
     public function apiShow (string $id)
     {
-        $with = ['addresses'];
+        $with = ['addresses', 'company', 'position', 'country'];
 
         $select = HCCompaniesEmployees::getFillableFields();
 

@@ -117,6 +117,8 @@ class HCCompaniesAddressesController extends HCBaseController
         $data = $this->getInputData();
 
         $record->update(array_get($data, 'record', []));
+        $record->employees()->detach();
+        $record->employees()->sync(array_get($data, 'employees'));
 
         return $this->apiShow($record->id);
     }
@@ -181,7 +183,7 @@ class HCCompaniesAddressesController extends HCBaseController
      */
     protected function createQuery (array $select = null)
     {
-        $with = [];
+        $with = ['city', 'company', 'type', 'employees', 'country'];
 
         if ($select == null)
             $select = HCCompaniesAddresses::getFillableFields();
@@ -251,6 +253,11 @@ class HCCompaniesAddressesController extends HCBaseController
         array_set($data, 'record.fax', array_get($_data, 'fax'));
         array_set($data, 'record.remote_location', array_get($_data, 'remote_location'));
 
+        array_set($data, 'employees', array_get($_data, 'employees'));
+
+        if (!$data['employees'])
+            $data['employees'] = [];
+
         return makeEmptyNullable($data);
     }
 
@@ -262,7 +269,7 @@ class HCCompaniesAddressesController extends HCBaseController
      */
     public function apiShow (string $id)
     {
-        $with = [];
+        $with = ['city', 'company', 'type', 'employees', 'country'];
 
         $select = HCCompaniesAddresses::getFillableFields();
 

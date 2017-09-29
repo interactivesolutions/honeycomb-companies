@@ -23,8 +23,6 @@ class HCCompaniesAddresses extends HCUuidModel
      */
     protected $fillable = ['id', 'company_id', 'type_id', 'title', 'employee_id', 'country_id', 'municipality_id', 'city_id', 'street', 'zip', 'phone', 'fax', 'remote_location'];
 
-    protected $with = ['city', 'company', 'type', 'employee', 'country'];
-
     /**
      * Company data
      *
@@ -73,5 +71,15 @@ class HCCompaniesAddresses extends HCUuidModel
     public function city ()
     {
         return $this->hasOne(HCCities::class, 'id', 'city_id');
+    }
+
+    /**
+     * Employee data
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function employees ()
+    {
+        return $this->belongsToMany(HCCompaniesEmployees::class, 'hc_companies_employee_addresses', 'address_id', 'employee_id')->withPivot('count')->orderBy("hc_companies_employee_addresses.count");
     }
 }

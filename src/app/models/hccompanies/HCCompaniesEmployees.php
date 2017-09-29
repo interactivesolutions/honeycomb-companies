@@ -25,8 +25,6 @@ class HCCompaniesEmployees extends HCUuidModel
 
     protected $appends = ['email'];
 
-    protected $with = ['company', 'position', 'country'];
-
     /**
      * User data
      *
