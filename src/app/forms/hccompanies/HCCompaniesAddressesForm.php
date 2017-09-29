@@ -31,6 +31,7 @@ class HCCompaniesAddressesForm
                 [
                     "class" => "col-centered",
                     "label" => trans('HCTranslations::core.buttons.submit'),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "type"  => "submit",
                 ],
             ],
@@ -39,6 +40,7 @@ class HCCompaniesAddressesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "company_id",
                     "label"           => trans("HCCompanies::hc_companies_addresses.company_id"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "options"         => HCCompanies::get(),
@@ -52,6 +54,7 @@ class HCCompaniesAddressesForm
                     "type"            => "dropDownList",
                     "fieldID"         => "type_id",
                     "label"           => trans("HCCompanies::hc_companies_addresses.type_id"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "options"         => HCCompaniesAddressesTypes::with('translations')->get(),
@@ -67,27 +70,14 @@ class HCCompaniesAddressesForm
                     "type"            => "singleLine",
                     "fieldID"         => "title",
                     "label"           => trans("HCCompanies::hc_companies_addresses.title"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "required"        => 1,
                     "requiredVisible" => 1,
                 ], [
                     "type"            => "dropDownList",
-                    "fieldID"         => "employee_id",
-                    "label"           => trans("HCCompanies::hc_companies_addresses.employee_id"),
-                    "search"          => [
-                        "maximumSelectionLength" => 1,
-                        "minimumSelectionLength" => 1,
-                        "showNodes" => ['name', 'surname']
-                    ],
-                    "dependencies" => [
-                        [
-                            "field_id"    => "company_id",
-                            "options_url" => route('admin.api.routes.hc.companies.employees.list'),
-                        ],
-                    ],
-                ], [
-                    "type"            => "dropDownList",
                     "fieldID"         => "country_id",
                     "label"           => trans("HCTranslations::core.country"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "options"         => HCCountries::select('id', 'translation_key')->get(),
@@ -100,6 +90,7 @@ class HCCompaniesAddressesForm
                     "type"         => "dropDownList",
                     "fieldID"      => "city_id",
                     "label"        => trans("HCTranslations::core.city"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "search"       => [
                         "maximumSelectionLength" => 1,
                         "minimumSelectionLength" => 1,
@@ -113,12 +104,13 @@ class HCCompaniesAddressesForm
                     ],
                     "new"          => [
                         "url"     => route('admin.api.form-manager', 'regions-cities-new'),
-                        "require" => ['municipality_id'],
+                        "require" => ['country_id'],
                     ],
                 ], [
                     "type"            => 'dropDownList',
                     "fieldID"         => 'remote_location',
                     "label"           => trans("HCCompanies::hc_companies_addresses.remote_location"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                     "options"         => [
                         ['id' => '1', 'label' => trans('HCTranslations::core.yes')],
                         ['id' => '0', 'label' => trans('HCTranslations::core.no')],
@@ -130,20 +122,41 @@ class HCCompaniesAddressesForm
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "label"           => trans("HCCompanies::hc_companies_addresses.street"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "zip",
                     "label"           => trans("HCCompanies::hc_companies_addresses.zip"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "phone",
                     "label"           => trans("HCTranslations::core.phone"),
+                    "tabID"           => trans('HCTranslations::core.general'),
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "fax",
                     "label"           => trans("HCTranslations::core.fax"),
-                ],
-
+                    "tabID"           => trans('HCTranslations::core.general'),
+                ], [
+                    "type"    => "dropDownList",
+                    "fieldID" => "employees",
+                    "label"   => trans("HCCompanies::hc_companies_employees.page_title"),
+                    "tabID"   => trans('HCCompanies::hc_companies_employees.page_title'),
+                    "search"  => [
+                        "showNodes" => ["name", "email"],
+                    ],
+                    "dependencies" => [
+                        [
+                            "field_id"    => "company_id",
+                            "options_url" => route('admin.api.routes.hc.companies.employees.list'),
+                        ],
+                    ],
+                    "new"     => [
+                        "url"     => route('admin.api.form-manager', 'hc-companies-employees-new'),
+                        "require" => ['company_id'],
+                    ],
+                ]
             ],
         ];
 
@@ -154,7 +167,7 @@ class HCCompaniesAddressesForm
             return $form;
 
         //Make changes to edit form if needed
-        // $form['structure'][] = [];
+         $form['structure'][0]['readonly'] = 1;
 
         return $form;
     }

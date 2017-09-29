@@ -149,6 +149,25 @@ class HCCompaniesEmployeesForm
                     "properties" => [
                         "format" => "Y-MM-DD",
                     ],
+                ],[
+                    "type"    => "dropDownList",
+                    "fieldID" => "addresses",
+                    "label"   => trans("HCCompanies::hc_companies_employees.addresses"),
+                    "tabID"   => trans('HCCompanies::hc_companies_employees.addresses'),
+                    "search"  => [
+                        "showNodes" => ["title", "street"],
+                    ],
+                    "dependencies" => [
+                        [
+                            "field_id"    => "company_id",
+                            "options_url" => route('admin.api.routes.hc.companies.addresses.list'),
+                        ],
+                    ],
+                    "new"     => [
+                        "url"     => route('admin.api.form-manager', 'hc-companies-just-addresses-new'),
+                        "require" => ['company_id'],
+                    ],
+                    "sortable" => 1
                 ],
             ],
         ];
@@ -160,27 +179,8 @@ class HCCompaniesEmployeesForm
             return $form;
 
         //Make changes to edit form if needed
+        $form['structure'][0]['readonly'] = 1;
         $form['structure'][1]['readonly'] = 1;
-        $form['structure'][] = [
-            "type"    => "dropDownList",
-            "fieldID" => "addresses",
-            "label"   => trans("HCCompanies::hc_companies_employees.addresses"),
-            "tabID"   => trans('HCCompanies::hc_companies_employees.addresses'),
-            "search"  => [
-                "showNodes" => ["title", "street"],
-            ],
-            "dependencies" => [
-                [
-                    "field_id"    => "company_id",
-                    "options_url" => route('admin.api.routes.hc.companies.addresses.list'),
-                ],
-            ],
-            "new"     => [
-                "url"     => route('admin.api.form-manager', 'hc-companies-just-addresses-new'),
-                "require" => ['company_id'],
-            ],
-            "sortable" => 1
-        ];
 
         return $form;
     }
