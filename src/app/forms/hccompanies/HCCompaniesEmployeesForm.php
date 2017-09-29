@@ -147,7 +147,7 @@ class HCCompaniesEmployeesForm
                     "label"      => trans("HCTranslations::core.birthday"),
                     "tabID"      => trans('HCTranslations::core.general'),
                     "properties" => [
-                        "format" => "Y-MM-DD",
+                        "format" => "YYYY-MM-DD",
                     ],
                 ],[
                     "type"    => "dropDownList",

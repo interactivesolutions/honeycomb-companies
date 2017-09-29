@@ -111,6 +111,8 @@ class HCCompaniesEmployeesController extends HCBaseController
         }
 
         $record = HCCompaniesEmployees::create(array_get($data, 'record'));
+        $record->addresses()->detach();
+        $record->addresses()->sync(array_get($data, 'addresses'));
 
         return $this->apiShow($record->id);
     }
