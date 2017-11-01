@@ -94,7 +94,7 @@ class HCCompaniesForm
                     ],
                 ], [
                     "type"         => "singleLine",
-                    "fieldID"      => "id",
+                    "fieldID"      => "company_code",
                     "required"        => 1,
                     "requiredVisible" => 1,
                     "label"        => trans("HCCompanies::hc_companies.code"),

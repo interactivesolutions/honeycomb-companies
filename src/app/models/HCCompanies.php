@@ -21,7 +21,7 @@ class HCCompanies extends HCUuidModel
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'vat', 'country_id', 'municipality_id', 'city_id', 'type_id', 'logo_id', 'website'];
+    protected $fillable = ['id', 'name', 'vat', 'country_id', 'municipality_id', 'city_id', 'type_id', 'logo_id', 'website', 'company_code'];
 
     protected $with = ['country', 'city', 'municipality'];
 

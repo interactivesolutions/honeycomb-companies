@@ -9,12 +9,12 @@ class HCCompaniesValidator extends HCCoreFormValidator
      *
      * @return array
      */
-    protected function rules ()
+    protected function rules()
     {
         return [
-            'name'       => 'required',
+            'name' => 'required',
             'country_id' => 'required',
-            'id'         => 'required',
+            'company_code' => 'required',
 
         ];
     }

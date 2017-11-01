@@ -9,9 +9,6 @@ use interactivesolutions\honeycombcompanies\app\validators\HCCompaniesValidator;
 
 class HCCompaniesController extends HCBaseController
 {
-
-    //TODO recordsPerPage setting
-
     /**
      * Returning configured admin view
      *
@@ -58,7 +55,7 @@ class HCCompaniesController extends HCBaseController
                 "type"  => "image",
                 "label" => trans('HCTranslations::core.logo'),
             ],
-            'id'       => [
+            'company_code'       => [
                 "type"  => "text",
                 "label" => trans('HCCompanies::hc_companies.code'),
             ],
@@ -97,8 +94,10 @@ class HCCompaniesController extends HCBaseController
 
     /**
      * Create item
-     *
      * @return mixed
+     * @throws \Exception
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \InvalidArgumentException
      */
     protected function __apiStore ()
     {
@@ -112,8 +111,11 @@ class HCCompaniesController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \InvalidArgumentException
      */
     protected function __apiUpdate (string $id)
     {
@@ -131,6 +133,8 @@ class HCCompaniesController extends HCBaseController
      *
      * @param string $id
      * @return mixed
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \InvalidArgumentException
      */
     protected function __apiUpdateStrict (string $id)
     {
@@ -183,6 +187,7 @@ class HCCompaniesController extends HCBaseController
      *
      * @param array $select
      * @return mixed
+     * @throws \InvalidArgumentException
      */
     protected function createQuery (array $select = null)
     {
@@ -230,8 +235,8 @@ class HCCompaniesController extends HCBaseController
 
     /**
      * Getting user data on POST call
-     *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData ()
     {
@@ -242,6 +247,7 @@ class HCCompaniesController extends HCBaseController
         if (array_has($_data, 'id'))
             array_set($data, 'record.id', array_get($_data, 'id'));
 
+        array_set($data, 'record.company_code', array_get($_data, 'company_code'));
         array_set($data, 'record.name', array_get($_data, 'name'));
         array_set($data, 'record.vat', array_get($_data, 'vat'));
         array_set($data, 'record.country_id', array_get($_data, 'country_id'));
@@ -257,8 +263,10 @@ class HCCompaniesController extends HCBaseController
     /**
      * Getting single record
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @throws \InvalidArgumentException
      */
     public function apiShow (string $id)
     {
