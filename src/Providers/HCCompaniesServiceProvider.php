@@ -25,7 +25,7 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
     /**
      * @var string
      */
-    public $serviceProviderNameSpace = 'HCCompanies';
+    protected $serviceProviderNameSpace = 'HCCompanies';
 
     /**
      * @param Router $router
