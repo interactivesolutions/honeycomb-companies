@@ -13,7 +13,7 @@ class CreateEmployeeAddressesConnectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hc_companies_employee_addresses', function (Blueprint $table) {
+        Schema::create('hc_companies_employee_addresses', function(Blueprint $table) {
             $table->integer('count', true);
             $table->string('employee_id', 36)->index('fk_hc_companies_employee_addresses_employees_idx');
             $table->string('address_id', 36)->index('fk_hc_companies_employee_addresses_addresses_idx');

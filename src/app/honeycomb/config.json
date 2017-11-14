@@ -1,161 +1,161 @@
 {
-    "general": {
-        "serviceProviderNameSpace": "HCCompanies"
+  "general": {
+    "serviceProviderNameSpace": "HCCompanies"
+  },
+  "formData": {
+    "hc-companies": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompaniesForm",
+    "hc-companies-types": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesTypesForm",
+    "hc-companies-positions": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesPositionsForm",
+    "hc-companies-employees": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesEmployeesForm",
+    "hc-companies-addresses-types": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesAddressesTypesForm",
+    "hc-companies-addresses": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesAddressesForm",
+    "hc-companies-just-addresses": "InteractiveSolutions\\HoneycombCompanies\\Forms\\HCCompanies\\HCCompaniesAddressesNoEmployeeForm"
+  },
+  "adminMenu": [
+    {
+      "route": "admin.routes.hc.companies.index",
+      "translation": "HCCompanies::hc_companies.page_title",
+      "icon": "fa-building-o",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+      "priority": 10
     },
-    "formData": {
-        "hc-companies": "interactivesolutions\\honeycombcompanies\\app\\forms\\HCCompaniesForm",
-        "hc-companies-types": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesTypesForm",
-        "hc-companies-positions": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesPositionsForm",
-        "hc-companies-employees": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesEmployeesForm",
-        "hc-companies-addresses-types": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesTypesForm",
-        "hc-companies-addresses": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesForm",
-        "hc-companies-just-addresses": "interactivesolutions\\honeycombcompanies\\app\\forms\\hccompanies\\HCCompaniesAddressesNoEmployeeForm"
+    {
+      "route": "admin.routes.hc.companies.types.index",
+      "translation": "HCCompanies::hc_companies_types.page_title",
+      "icon": "fa-tag",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
+      "parent": "admin.routes.hc.companies.index",
+      "priority": 10
     },
-    "adminMenu": [
-        {
-            "route": "admin.routes.hc.companies.index",
-            "translation": "HCCompanies::hc_companies.page_title",
-            "icon": "fa-building-o",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.hc.companies.types.index",
-            "translation": "HCCompanies::hc_companies_types.page_title",
-            "icon": "fa-tag",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
-            "parent": "admin.routes.hc.companies.index",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.hc.companies.positions.index",
-            "translation": "HCCompanies::hc_companies_positions.page_title",
-            "icon": "fa-eye",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
-            "parent": "admin.routes.hc.companies.index",
-            "priority": 11
-        },
-        {
-            "route": "admin.routes.hc.companies.employees.index",
-            "translation": "HCCompanies::hc_companies_employees.page_title",
-            "icon": "fa-user",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
-            "parent": "admin.routes.hc.companies.index",
-            "priority": 12
-        },
-        {
-            "route": "admin.routes.hc.companies.addresses.types.index",
-            "translation": "HCCompanies::hc_companies_addresses_types.page_title",
-            "icon": "fa-tag",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
-            "parent": "admin.routes.hc.companies.addresses.index",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.hc.companies.addresses.index",
-            "translation": "HCCompanies::hc_companies_addresses.page_title",
-            "icon": "fa-address-book-o",
-            "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
-            "parent": "admin.routes.hc.companies.index",
-            "priority": 13
-        }
-    ],
-    "acl": {
-        "permissions": [
-            {
-                "name": "admin.routes.hc.companies",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\HCCompaniesController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.hc.companies.types",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesTypesController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_types_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_types_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_types_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.hc.companies.positions",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesPositionsController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.hc.companies.employees",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesEmployeesController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.hc.companies.addresses.types",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesAddressesTypesController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.hc.companies.addresses",
-                "controller": "interactivesolutions\\honeycombcompanies\\app\\http\\controllers\\hccompanies\\HCCompaniesAddressesController",
-                "actions": [
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_create",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_update",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_delete",
-                    "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_force_delete"
-                ]
-            }
-        ],
-        "rolesActions": {
-            "project-admin": [
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_delete",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_create",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_update",
-                "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_delete"
-            ]
-        }
+    {
+      "route": "admin.routes.hc.companies.positions.index",
+      "translation": "HCCompanies::hc_companies_positions.page_title",
+      "icon": "fa-eye",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+      "parent": "admin.routes.hc.companies.index",
+      "priority": 11
+    },
+    {
+      "route": "admin.routes.hc.companies.employees.index",
+      "translation": "HCCompanies::hc_companies_employees.page_title",
+      "icon": "fa-user",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
+      "parent": "admin.routes.hc.companies.index",
+      "priority": 12
+    },
+    {
+      "route": "admin.routes.hc.companies.addresses.types.index",
+      "translation": "HCCompanies::hc_companies_addresses_types.page_title",
+      "icon": "fa-tag",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
+      "parent": "admin.routes.hc.companies.addresses.index",
+      "priority": 10
+    },
+    {
+      "route": "admin.routes.hc.companies.addresses.index",
+      "translation": "HCCompanies::hc_companies_addresses.page_title",
+      "icon": "fa-address-book-o",
+      "aclPermission": "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
+      "parent": "admin.routes.hc.companies.index",
+      "priority": 13
     }
+  ],
+  "acl": {
+    "permissions": [
+      {
+        "name": "admin.routes.hc.companies",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompaniesController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.hc.companies.types",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompanies\\HCCompaniesTypesController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_types_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_types_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_types_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.hc.companies.positions",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompanies\\HCCompaniesPositionsController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.hc.companies.employees",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompanies\\HCCompaniesEmployeesController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.hc.companies.addresses.types",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompanies\\HCCompaniesAddressesTypesController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.hc.companies.addresses",
+        "controller": "InteractiveSolutions\\HoneycombCompanies\\Http\\Controllers\\HCCompanies\\HCCompaniesAddressesController",
+        "actions": [
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_create",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_update",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_delete",
+          "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_force_delete"
+        ]
+      }
+    ],
+    "rolesActions": {
+      "project-admin": [
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_delete",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_types_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_types_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_types_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_types_delete",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_positions_delete",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_employees_delete",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_list",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_create",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_update",
+        "interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_delete"
+      ]
+    }
+  }
 }

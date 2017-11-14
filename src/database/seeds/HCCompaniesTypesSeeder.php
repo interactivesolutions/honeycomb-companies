@@ -1,9 +1,9 @@
 <?php
 
-namespace interactivesolutions\honeycombcompanies\database\seeds;
+namespace InteractiveSolutions\HoneycombCompanies\database\seeds;
 
 use Illuminate\Database\Seeder;
-use interactivesolutions\honeycombcompanies\app\models\hccompanies\HCCompaniesTypes;
+use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesTypes;
 
 class HCCompaniesTypesSeeder extends Seeder
 {
@@ -12,7 +12,7 @@ class HCCompaniesTypesSeeder extends Seeder
      *
      * @return void
      */
-    public function run ()
+    public function run()
     {
         $list = [
             //Lithuania
@@ -68,33 +68,56 @@ class HCCompaniesTypesSeeder extends Seeder
             ['id' => 'ee-ou', 'short_name' => 'Other', 'country_id' => 'ee'],
 
             //Austria
-            ['id' => "at-gbr", "short_name" => "GBR", "country_id" => "at"],    //   "Gesellschaft bürgerlichen Rechts (non-trading partnership)"
-            ['id' => "at-og", "short_name" => "OG", "country_id" => "at"],      //   "Offene Gesellschaft (OG) (general partnership)"
-            ['id' => "at-kg", "short_name" => "KG", "country_id" => "at"],      //   "Kommanditgesellschaft (KG) (limited partnership)"
-            ['id' => "at-sg", "short_name" => "SG", "country_id" => "at"],      //   "Stille Gesellschaft (silent partnership)"
-            ['id' => "at-ag", "short_name" => "AG", "country_id" => "at"],      //   "Aktiengesellschaft (AG) (public limited company)"
-            ['id' => "at-gmbh", "short_name" => "GmbH", "country_id" => "at"],  //   "Gesellschaft mit beschränkter Haftung (GmbH) (limited liability company)"
-            ['id' => "at-ew", "short_name" => "EW", "country_id" => "at"],      //   "Erwerbs- und Wirtschaftsgenossenschaft (cooperative and industrial and provident society)"
-            ['id' => "at-v", "short_name" => "V", "country_id" => "at"],        //   "Verein (association)"
-            ['id' => "at-se", "short_name" => "SE", "country_id" => "at"],      //   "European Public Company (Societas Europaea - SE)"
-            ['id' => "at-eeig", "short_name" => "EEIG", "country_id" => "at"],  //   "European Economic Interest Grouping (EEIG)"
+            ['id' => "at-gbr", "short_name" => "GBR", "country_id" => "at"],
+            //   "Gesellschaft bürgerlichen Rechts (non-trading partnership)"
+            ['id' => "at-og", "short_name" => "OG", "country_id" => "at"],
+            //   "Offene Gesellschaft (OG) (general partnership)"
+            ['id' => "at-kg", "short_name" => "KG", "country_id" => "at"],
+            //   "Kommanditgesellschaft (KG) (limited partnership)"
+            ['id' => "at-sg", "short_name" => "SG", "country_id" => "at"],
+            //   "Stille Gesellschaft (silent partnership)"
+            ['id' => "at-ag", "short_name" => "AG", "country_id" => "at"],
+            //   "Aktiengesellschaft (AG) (public limited company)"
+            ['id' => "at-gmbh", "short_name" => "GmbH", "country_id" => "at"],
+            //   "Gesellschaft mit beschränkter Haftung (GmbH) (limited liability company)"
+            ['id' => "at-ew", "short_name" => "EW", "country_id" => "at"],
+            //   "Erwerbs- und Wirtschaftsgenossenschaft (cooperative and industrial and provident society)"
+            ['id' => "at-v", "short_name" => "V", "country_id" => "at"],
+            //   "Verein (association)"
+            ['id' => "at-se", "short_name" => "SE", "country_id" => "at"],
+            //   "European Public Company (Societas Europaea - SE)"
+            ['id' => "at-eeig", "short_name" => "EEIG", "country_id" => "at"],
+            //   "European Economic Interest Grouping (EEIG)"
 
             //Belgium
-            ["id" => "be-sprl-bvba", "short_name" => "SPRL/BVBA", "country_id" => "be"],         //Private limited company (SPRL/BVBA);
-            ["id" => "be-sa-nv", "short_name" => "SA/NV", "country_id" => "be"],             //Public limited company (SA/NV);
-            ["id" => "be-sc-scrl-cv-cvba", "short_name" => "SC/SCRL-CV/CVBA", "country_id" => "be"],   //Cooperative with limited liability (SC/SCRL-CV/CVBA);
-            ["id" => "be-scri-cvoa", "short_name" => "SCRI/CVOA", "country_id" => "be"],         //Cooperative with unlimited liability (SCRI/CVOA);
-            ["id" => "be-snc-vof", "short_name" => "SNC/VOF", "country_id" => "be"],           //General partnership (SNC/VOF);
-            ["id" => "be-scs-gcv", "short_name" => "SCS/GCV", "country_id" => "be"],           //Limited partnership (SCS/GCV);
-            ["id" => "be-sca-cva", "short_name" => "SCA/CVA", "country_id" => "be"],           //Partnership limited by shares (SCA/CVA);
-            ["id" => "be-sp", "short_name" => "SP", "country_id" => "be"],                //Sole proprietorship;
-            ["id" => "be-b", "short_name" => "B", "country_id" => "be"],                 //Branches and subsidiaries or representative office for foreign companies.
+            ["id" => "be-sprl-bvba", "short_name" => "SPRL/BVBA", "country_id" => "be"],
+            //Private limited company (SPRL/BVBA);
+            ["id" => "be-sa-nv", "short_name" => "SA/NV", "country_id" => "be"],
+            //Public limited company (SA/NV);
+            ["id" => "be-sc-scrl-cv-cvba", "short_name" => "SC/SCRL-CV/CVBA", "country_id" => "be"],
+            //Cooperative with limited liability (SC/SCRL-CV/CVBA);
+            ["id" => "be-scri-cvoa", "short_name" => "SCRI/CVOA", "country_id" => "be"],
+            //Cooperative with unlimited liability (SCRI/CVOA);
+            ["id" => "be-snc-vof", "short_name" => "SNC/VOF", "country_id" => "be"],
+            //General partnership (SNC/VOF);
+            ["id" => "be-scs-gcv", "short_name" => "SCS/GCV", "country_id" => "be"],
+            //Limited partnership (SCS/GCV);
+            ["id" => "be-sca-cva", "short_name" => "SCA/CVA", "country_id" => "be"],
+            //Partnership limited by shares (SCA/CVA);
+            ["id" => "be-sp", "short_name" => "SP", "country_id" => "be"],
+            //Sole proprietorship;
+            ["id" => "be-b", "short_name" => "B", "country_id" => "be"],
+            //Branches and subsidiaries or representative office for foreign companies.
 
             // Czech Republic
-            ["id" => "cz-sro", "short_name" => "s.r.o.", "country_id" => "cz"], // společnost s ručením omezeným - s.r.o.
-            ["id" => "cz-as", "short_name" => "a.s.", "country_id" => "cz"], // akciová společnost - a.s.
-            ["id" => "cz-vos", "short_name" => "v.o.s.", "country_id" => "cz"], // veřejná obchodní společnost - v.o.s.
-            ["id" => "cz-p", "short_name" => "p", "country_id" => "cz"], // pobočka
+            ["id" => "cz-sro", "short_name" => "s.r.o.", "country_id" => "cz"],
+            // společnost s ručením omezeným - s.r.o.
+            ["id" => "cz-as", "short_name" => "a.s.", "country_id" => "cz"],
+            // akciová společnost - a.s.
+            ["id" => "cz-vos", "short_name" => "v.o.s.", "country_id" => "cz"],
+            // veřejná obchodní společnost - v.o.s.
+            ["id" => "cz-p", "short_name" => "p", "country_id" => "cz"],
+            // pobočka
 
 
             //TODO https://en.wikipedia.org/wiki/List_of_business_entities

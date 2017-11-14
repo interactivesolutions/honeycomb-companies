@@ -13,7 +13,7 @@ class AddBirthdayFieldToHcCompaniesEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::table('hc_companies_employees', function (Blueprint $table) {
+        Schema::table('hc_companies_employees', function(Blueprint $table) {
             $table->date('birthday')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddBirthdayFieldToHcCompaniesEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::table('hc_companies_employees', function (Blueprint $table) {
+        Schema::table('hc_companies_employees', function(Blueprint $table) {
             $table->dropColumn('birthday');
         });
     }

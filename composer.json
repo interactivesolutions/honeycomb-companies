@@ -1,17 +1,33 @@
 {
-    "name": "interactivesolutions/honeycomb-companies",
-    "description": "",
-    "keywords": [],
-    "license": "MIT",
-    "authors": [],
-    "repositories": [],
-    "require": {
-        "php": ">=7.0.0",
-        "laravel/framework": "5.3.*"
+  "name": "interactivesolutions/honeycomb-companies",
+  "description": "Companies package",
+  "keywords": [
+    "honeycomb",
+    "laravel",
+    "package",
+    "companies"
+  ],
+  "homepage": "https://github.com/interactivesolutions/honeycomb-companies",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jevgenij Dmitrijev",
+      "email": "jd@interactivesolutions.lt"
     },
-    "autoload": {
-        "psr-4": {
-            "interactivesolutions\\honeycombcompanies\\": "src/"
-        }
+    {
+      "name": "Mantas Paulauskas",
+      "email": "mantopastas@gmail.com"
     }
+  ],
+  "repositories": [],
+  "require": {
+    "php": ">=7.1",
+    "laravel/framework": "^5.5",
+    "interactivesolutions/honeycomb-core": "~1.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "InteractiveSolutions\\HoneycombCompanies\\": "src/"
+    }
+  }
 }

@@ -13,7 +13,7 @@ class AddPhoneAndFaxFieldsToHcCompaniesAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::table('hc_companies_addresses', function (Blueprint $table) {
+        Schema::table('hc_companies_addresses', function(Blueprint $table) {
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
         });
@@ -26,7 +26,7 @@ class AddPhoneAndFaxFieldsToHcCompaniesAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::table('hc_companies_addresses', function (Blueprint $table) {
+        Schema::table('hc_companies_addresses', function(Blueprint $table) {
             $table->dropColumn('phone');
             $table->dropColumn('fax');
         });

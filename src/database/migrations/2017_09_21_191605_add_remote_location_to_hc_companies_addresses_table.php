@@ -13,7 +13,7 @@ class AddRemoteLocationToHcCompaniesAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::table('hc_companies_addresses', function (Blueprint $table) {
+        Schema::table('hc_companies_addresses', function(Blueprint $table) {
             $table->enum('remote_location', ['0', '1'])->default(0);
         });
     }
@@ -25,7 +25,7 @@ class AddRemoteLocationToHcCompaniesAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::table('hc_companies_addresses', function (Blueprint $table) {
+        Schema::table('hc_companies_addresses', function(Blueprint $table) {
             $table->dropColumn('remote_location');
         });
     }
