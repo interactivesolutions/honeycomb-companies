@@ -241,11 +241,11 @@ class HCCompaniesTypesController extends HCBaseController
 
         $translations = array_get($_data, 'translations');
 
-        foreach ($translations as &$value) {
-            if (!isset($value['slug']) || $value['slug'] == "") {
-                $value['slug'] = generateHCSlug("hc-companies/types", $value['label']);
-            }
-        }
+//        foreach ($translations as &$value) {
+//            if (!isset($value['slug']) || $value['slug'] == "") {
+//                $value['slug'] = generateHCSlug("hc-companies/types", $value['label']);
+//            }
+//        }
 
         array_set($data, 'translations', $translations);
 
