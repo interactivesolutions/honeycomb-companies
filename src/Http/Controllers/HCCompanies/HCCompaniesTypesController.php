@@ -206,7 +206,7 @@ class HCCompaniesTypesController extends HCBaseController
      * @param string $phrase
      * @return Builder
      */
-    protected function searchQuery(Builder $query, string $phrase)
+    protected function searchQuery(Builder $query, string $phrase): Builder
     {
         $r = HCCompaniesTypes::getTableName();
         $t = HCCompaniesTypesTranslations::getTableName();

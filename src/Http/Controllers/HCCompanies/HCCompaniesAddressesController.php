@@ -284,7 +284,7 @@ class HCCompaniesAddressesController extends HCBaseController
      * @param string $phrase
      * @return Builder
      */
-    protected function searchQuery(Builder $query, string $phrase)
+    protected function searchQuery(Builder $query, string $phrase): Builder
     {
         return $query->where(function(Builder $query) use ($phrase) {
             $query->where('company_id', 'LIKE', '%' . $phrase . '%')

@@ -195,7 +195,7 @@ class HCCompaniesPositionsController extends HCBaseController
      * @param string $phrase
      * @return Builder
      */
-    protected function searchQuery(Builder $query, string $phrase)
+    protected function searchQuery(Builder $query, string $phrase): Builder
     {
         $r = HCCompaniesPositions::getTableName();
         $t = HCCompaniesPositionsTranslations::getTableName();

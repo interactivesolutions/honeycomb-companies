@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -225,7 +227,7 @@ class HCCompaniesController extends HCBaseController
      * @param string $phrase
      * @return Builder
      */
-    protected function searchQuery(Builder $query, string $phrase)
+    protected function searchQuery(Builder $query, string $phrase): Builder
     {
         return $query->where(function(Builder $query) use ($phrase) {
             $query->where('name', 'LIKE', '%' . $phrase . '%')
