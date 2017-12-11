@@ -3,6 +3,7 @@
 namespace InteractiveSolutions\HoneycombCompanies\Providers;
 
 use Illuminate\Routing\Router;
+use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyAddressRepository;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 
 class HCCompaniesServiceProvider extends HCBaseServiceProvider
@@ -26,6 +27,16 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
      * @var string
      */
     protected $serviceProviderNameSpace = 'HCCompanies';
+
+    /**
+     *
+     */
+    public function register()
+    {
+        parent::register();
+
+        $this->registerRepositories();
+    }
 
     /**
      * @param Router $router
@@ -87,6 +98,14 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
     private function modulePath(string $path): string
     {
         return __DIR__ . '/../' . $path;
+    }
+
+    /**
+     *
+     */
+    private function registerRepositories()
+    {
+        $this->app->singleton(HCCompanyAddressRepository::class);
     }
 }
 
