@@ -10,6 +10,7 @@ use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyAddressTypeRep
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyEmployeeRepository;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyPositionRepository;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyRepository;
+use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyTypeRepository;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 
 /**
@@ -120,5 +121,6 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
         $this->app->singleton(HCCompanyEmployeeRepository::class);
         $this->app->singleton(HCCompanyPositionRepository::class);
         $this->app->singleton(HCCompanyRepository::class);
+        $this->app->singleton(HCCompanyTypeRepository::class);
     }
 }

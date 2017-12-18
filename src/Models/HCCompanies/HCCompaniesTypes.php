@@ -49,5 +49,4 @@ class HCCompaniesTypes extends HCMultiLanguageModel
         'country_id',
         'short_name',
     ];
-
 }
