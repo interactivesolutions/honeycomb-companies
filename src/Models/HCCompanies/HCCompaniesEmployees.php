@@ -1,7 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Models\HCCompanies;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use InteractiveSolutions\HoneycombAcl\Models\HCUsers;
@@ -9,6 +14,49 @@ use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 use interactivesolutions\honeycombregions\app\models\regions\HCCountries;
 
+/**
+ * InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesEmployees
+ *
+ * @property int $count
+ * @property string $id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ * @property string $company_id
+ * @property string $user_id
+ * @property string $name
+ * @property string|null $surname
+ * @property string $position_id
+ * @property string|null $country_id
+ * @property string|null $municipality_id
+ * @property string|null $city_id
+ * @property string|null $phone
+ * @property string|null $fax
+ * @property string|null $birthday
+ * @property-read Collection|HCCompaniesAddresses[] $addresses
+ * @property-read HCCompanies $company
+ * @property-read HCCountries $country
+ * @property-read mixed $email
+ * @property-read HCCompaniesPositions $position
+ * @property-read HCUsers $user
+ * @method static Builder|HCCompaniesEmployees whereBirthday($value)
+ * @method static Builder|HCCompaniesEmployees whereCityId($value)
+ * @method static Builder|HCCompaniesEmployees whereCompanyId($value)
+ * @method static Builder|HCCompaniesEmployees whereCount($value)
+ * @method static Builder|HCCompaniesEmployees whereCountryId($value)
+ * @method static Builder|HCCompaniesEmployees whereCreatedAt($value)
+ * @method static Builder|HCCompaniesEmployees whereDeletedAt($value)
+ * @method static Builder|HCCompaniesEmployees whereFax($value)
+ * @method static Builder|HCCompaniesEmployees whereId($value)
+ * @method static Builder|HCCompaniesEmployees whereMunicipalityId($value)
+ * @method static Builder|HCCompaniesEmployees whereName($value)
+ * @method static Builder|HCCompaniesEmployees wherePhone($value)
+ * @method static Builder|HCCompaniesEmployees wherePositionId($value)
+ * @method static Builder|HCCompaniesEmployees whereSurname($value)
+ * @method static Builder|HCCompaniesEmployees whereUpdatedAt($value)
+ * @method static Builder|HCCompaniesEmployees whereUserId($value)
+ * @mixin \Eloquent
+ */
 class HCCompaniesEmployees extends HCUuidModel
 {
     /**
@@ -95,7 +143,12 @@ class HCCompaniesEmployees extends HCUuidModel
      */
     public function addresses(): BelongsToMany
     {
-        return $this->belongsToMany(HCCompaniesAddresses::class, 'hc_companies_employee_addresses', 'employee_id',
-            'address_id')->withPivot('count')->orderBy("hc_companies_employee_addresses.count");
+        return $this->belongsToMany(
+            HCCompaniesAddresses::class,
+            'hc_companies_employee_addresses',
+            'employee_id',
+            'address_id'
+        )->withPivot('count')
+            ->orderBy("hc_companies_employee_addresses.count");
     }
 }
