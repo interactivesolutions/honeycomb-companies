@@ -5,6 +5,7 @@ namespace InteractiveSolutions\HoneycombCompanies\Providers;
 use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyAddressRepository;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyAddressTypeRepository;
+use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyEmployeeRepository;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyRepository;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 
@@ -109,6 +110,7 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
     {
         $this->app->singleton(HCCompanyAddressRepository::class);
         $this->app->singleton(HCCompanyAddressTypeRepository::class);
+        $this->app->singleton(HCCompanyEmployeeRepository::class);
         $this->app->singleton(HCCompanyRepository::class);
     }
 }

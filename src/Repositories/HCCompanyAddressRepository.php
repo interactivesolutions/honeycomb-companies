@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\HoneycombCompanies\Repositories;
 
-
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesAddresses;
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
 

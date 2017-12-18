@@ -4,14 +4,14 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\HoneycombCompanies\Repositories;
 
-use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies;
+use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesEmployees;
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
 
 /**
- * Class HCCompanyRepository
+ * Class HCCompanyEmployeeRepository
  * @package InteractiveSolutions\HoneycombCompanies\Repositories
  */
-class HCCompanyRepository extends Repository
+class HCCompanyEmployeeRepository extends Repository
 {
 
     /**
@@ -19,6 +19,6 @@ class HCCompanyRepository extends Repository
      */
     public function model(): string
     {
-        return HCCompanies::class;
+        return HCCompaniesEmployees::class;
     }
 }
