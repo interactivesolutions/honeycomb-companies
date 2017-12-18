@@ -23,7 +23,9 @@
   "require": {
     "php": ">=7.1",
     "laravel/framework": "^5.5",
-    "interactivesolutions/honeycomb-core": "~1.1.0"
+    "interactivesolutions/honeycomb-core": "~1.1.0",
+    "interactivesolutions/honeycomb-regions": "^1.1",
+    "interactivesolutions/honeycomb-acl": "^1.1"
   },
   "autoload": {
     "psr-4": {
