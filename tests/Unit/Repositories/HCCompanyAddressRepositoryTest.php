@@ -21,7 +21,6 @@ class HCCompanyAddressRepositoryTest extends TestCase
     {
         $this->assertInstanceOf(HCCompanyAddressRepository::class, $this->getRepositoryInstance());
         $this->assertSame($this->getRepositoryInstance(), $this->getRepositoryInstance());
-
     }
 
     /**
