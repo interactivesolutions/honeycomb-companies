@@ -41,5 +41,4 @@ class HCCompaniesPositions extends HCMultiLanguageModel
      * @var array
      */
     protected $fillable = ['id'];
-
 }
