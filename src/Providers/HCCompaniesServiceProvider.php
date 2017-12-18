@@ -4,6 +4,7 @@ namespace InteractiveSolutions\HoneycombCompanies\Providers;
 
 use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyAddressRepository;
+use InteractiveSolutions\HoneycombCompanies\Repositories\HCCompanyRepository;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 
 class HCCompaniesServiceProvider extends HCBaseServiceProvider
@@ -60,7 +61,7 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
         ];
 
         foreach ($routes as $route) {
-            $router->group(['namespace' => $this->namespace], function($router) use ($route) {
+            $router->group(['namespace' => $this->namespace], function ($router) use ($route) {
                 require $route;
             });
         }
@@ -106,6 +107,7 @@ class HCCompaniesServiceProvider extends HCBaseServiceProvider
     private function registerRepositories()
     {
         $this->app->singleton(HCCompanyAddressRepository::class);
+        $this->app->singleton(HCCompanyRepository::class);
     }
 }
 
