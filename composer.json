@@ -27,9 +27,31 @@
     "interactivesolutions/honeycomb-regions": "^1.1",
     "interactivesolutions/honeycomb-acl": "^1.1"
   },
+  "require-dev": {
+    "brianium/paratest": "^1.0",
+    "mockery/mockery": "^1.0",
+    "orchestra/testbench-browser-kit": "^3.5",
+    "phpunit/phpunit": "^6.4"
+  },
   "autoload": {
     "psr-4": {
       "InteractiveSolutions\\HoneycombCompanies\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "paratest -p4 --colors"
+    ]
+  },
+  "config": {
+    "secure-http": false,
+    "platform": {
+      "php": "7.1"
     }
   }
 }
