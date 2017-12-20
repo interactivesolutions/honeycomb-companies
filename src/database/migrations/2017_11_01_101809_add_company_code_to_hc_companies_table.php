@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,15 +15,10 @@ class AddCompanyCodeToHcCompaniesTable extends Migration
      * @return void
      * @throws Exception
      */
-    public function up()
+    public function up(): void
     {
-        if (HCCompanies::withTrashed()->count() > 0) {
-            throw new Exception('hc_companies needs to be empty!');
-        }
-
-        Schema::table('hc_companies', function(Blueprint $table) {
+        Schema::table('hc_companies', function (Blueprint $table) {
             $table->string('company_code', 36)->index()->nullable();
-
             $table->unique(['company_code', 'country_id'], 'unique_company_in_country');
         });
     }
@@ -31,9 +28,9 @@ class AddCompanyCodeToHcCompaniesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table('hc_companies', function(Blueprint $table) {
+        Schema::table('hc_companies', function (Blueprint $table) {
 
             $table->dropUnique('unique_company_in_country');
 
