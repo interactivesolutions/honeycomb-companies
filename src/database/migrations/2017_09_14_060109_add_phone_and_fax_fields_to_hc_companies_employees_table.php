@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class AddPhoneAndFaxFieldsToHcCompaniesEmployeesTable
+ */
 class AddPhoneAndFaxFieldsToHcCompaniesEmployeesTable extends Migration
 {
     /**
@@ -29,8 +32,7 @@ class AddPhoneAndFaxFieldsToHcCompaniesEmployeesTable extends Migration
     public function down(): void
     {
         Schema::table('hc_companies_employees', function (Blueprint $table) {
-            $table->dropColumn('phone');
-            $table->dropColumn('fax');
+            $table->dropColumn(['phone', 'fax']);
         });
     }
 }
