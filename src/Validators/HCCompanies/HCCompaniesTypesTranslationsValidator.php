@@ -1,9 +1,15 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies;
 
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCCoreFormValidator;
 
+/**
+ * Class HCCompaniesTypesTranslationsValidator
+ * @package InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies
+ */
 class HCCompaniesTypesTranslationsValidator extends HCCoreFormValidator
 {
     /**
@@ -15,7 +21,6 @@ class HCCompaniesTypesTranslationsValidator extends HCCoreFormValidator
     {
         return [
             'translations.*.name' => 'required',
-
         ];
     }
 }

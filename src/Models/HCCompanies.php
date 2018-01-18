@@ -29,8 +29,6 @@ use interactivesolutions\honeycombregions\app\models\regions\HCMunicipalities;
  * @property string|null $logo_id
  * @property string|null $website
  * @property string|null $company_code
- * @property string|null $price_list_id
- * @property string $rivile_id
  * @property-read HCCities $city
  * @property-read HCCountries $country
  * @property-read HCMunicipalities $municipality
@@ -44,8 +42,6 @@ use interactivesolutions\honeycombregions\app\models\regions\HCMunicipalities;
  * @method static Builder|HCCompanies whereLogoId($value)
  * @method static Builder|HCCompanies whereMunicipalityId($value)
  * @method static Builder|HCCompanies whereName($value)
- * @method static Builder|HCCompanies wherePriceListId($value)
- * @method static Builder|HCCompanies whereRivileId($value)
  * @method static Builder|HCCompanies whereTypeId($value)
  * @method static Builder|HCCompanies whereUpdatedAt($value)
  * @method static Builder|HCCompanies whereVat($value)

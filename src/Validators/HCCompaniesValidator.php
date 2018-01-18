@@ -1,9 +1,15 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Validators;
 
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCCoreFormValidator;
 
+/**
+ * Class HCCompaniesValidator
+ * @package InteractiveSolutions\HoneycombCompanies\Validators
+ */
 class HCCompaniesValidator extends HCCoreFormValidator
 {
     /**

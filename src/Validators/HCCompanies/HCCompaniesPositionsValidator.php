@@ -1,9 +1,15 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies;
 
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCCoreFormValidator;
 
+/**
+ * Class HCCompaniesPositionsValidator
+ * @package InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies
+ */
 class HCCompaniesPositionsValidator extends HCCoreFormValidator
 {
     /**
@@ -13,8 +19,6 @@ class HCCompaniesPositionsValidator extends HCCoreFormValidator
      */
     protected function rules()
     {
-        return [
-
-        ];
+        return [];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -7,9 +9,13 @@ use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesPositions;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesPositionsTranslations;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesPositionsValidator;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesPositionsTranslationsValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesPositionsValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesPositionsTranslationsValidator;
 
+/**
+ * Class HCCompaniesPositionsController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies
+ */
 class HCCompaniesPositionsController extends HCBaseController
 {
     /**
@@ -53,16 +59,16 @@ class HCCompaniesPositionsController extends HCBaseController
      *
      * @return array
      */
-    private function getAdminListHeader()
+    private function getAdminListHeader(): array
     {
         return [
             'translations.{lang}.title' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_positions.title'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_positions.title'),
             ],
             'translations.{lang}.description' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_positions.description'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_positions.description'),
             ],
 
         ];
@@ -72,6 +78,7 @@ class HCCompaniesPositionsController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
@@ -86,8 +93,9 @@ class HCCompaniesPositionsController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -122,8 +130,9 @@ class HCCompaniesPositionsController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCCompaniesPositionsTranslations::destroy(HCCompaniesPositionsTranslations::whereIn('record_id',
-            $list)->pluck('id')->toArray());
+        HCCompaniesPositionsTranslations::destroy(
+            HCCompaniesPositionsTranslations::whereIn('record_id', $list)->pluck('id')->toArray()
+        );
         HCCompaniesPositions::destroy($list);
 
         return hcSuccess();
@@ -173,7 +182,7 @@ class HCCompaniesPositionsController extends HCBaseController
 
         $list = HCCompaniesPositions::with($with)
             ->select($select)
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -200,7 +209,7 @@ class HCCompaniesPositionsController extends HCBaseController
         $r = HCCompaniesPositions::getTableName();
         $t = HCCompaniesPositionsTranslations::getTableName();
 
-        $query->where(function(Builder $query) use ($phrase) {
+        $query->where(function (Builder $query) use ($phrase) {
             $query;
         });
 
@@ -213,6 +222,7 @@ class HCCompaniesPositionsController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -224,7 +234,6 @@ class HCCompaniesPositionsController extends HCBaseController
         if (array_has($_data, 'id')) {
             array_set($data, 'record.id', array_get($_data, 'id'));
         }
-
 
         $translations = array_get($_data, 'translations');
 

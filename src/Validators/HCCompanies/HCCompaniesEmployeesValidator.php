@@ -1,9 +1,15 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies;
 
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCCoreFormValidator;
 
+/**
+ * Class HCCompaniesEmployeesValidator
+ * @package InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies
+ */
 class HCCompaniesEmployeesValidator extends HCCoreFormValidator
 {
     /**
@@ -18,7 +24,6 @@ class HCCompaniesEmployeesValidator extends HCCoreFormValidator
             'email' => 'required|email',
             'name' => 'required',
             'position_id' => 'required',
-
         ];
     }
 }

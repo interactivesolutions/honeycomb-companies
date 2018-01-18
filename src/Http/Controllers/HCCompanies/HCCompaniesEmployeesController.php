@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -7,9 +9,13 @@ use Illuminate\View\View;
 use InteractiveSolutions\HoneycombAcl\Models\HCUsers;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesEmployees;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesEmployeesValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesEmployeesValidator;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 
+/**
+ * Class HCCompaniesEmployeesController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies
+ */
 class HCCompaniesEmployeesController extends HCBaseController
 {
     /**
@@ -54,41 +60,41 @@ class HCCompaniesEmployeesController extends HCBaseController
      *
      * @return array
      */
-    public function getAdminListHeader()
+    public function getAdminListHeader(): array
     {
         return [
             'country.translation' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.country_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.country_id'),
             ],
             'company.name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.company_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.company_id'),
             ],
             'email' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.email'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.email'),
             ],
             'name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.name'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.name'),
             ],
             'surname' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.surname'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.surname'),
             ],
             'position.translation.title' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.position_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.position_id'),
             ]/*,
 
             'municipality_id' => [
-                "type"  => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.municipality_id'),
+                'type'  => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.municipality_id'),
             ],
             'city_id'         => [
-                "type"  => "text",
-                "label" => trans('HCCompanies::hc_companies_employees.city_id'),
+                'type'  => 'text',
+                'label' => trans('HCCompanies::hc_companies_employees.city_id'),
             ],*/
 
         ];
@@ -106,7 +112,7 @@ class HCCompaniesEmployeesController extends HCBaseController
         $companies = [
             'fieldID' => 'company_id',
             'type' => 'dropDownList',
-            "label" => trans("HCCompanies::hc_companies_employees.company_id"),
+            'label' => trans('HCCompanies::hc_companies_employees.company_id'),
             'options' => HCCompanies::all()->toArray(),
             'showNodes' => ['name'],
         ];
@@ -120,6 +126,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      * Create item
      * @return mixed
      * @throws \Exception
+     * @throws \Illuminate\Support\Facades\Exception
      */
     protected function __apiStore()
     {
@@ -148,6 +155,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -204,8 +212,9 @@ class HCCompaniesEmployeesController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -288,7 +297,7 @@ class HCCompaniesEmployeesController extends HCBaseController
 
         $list = HCCompaniesEmployees::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -312,7 +321,7 @@ class HCCompaniesEmployeesController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('company_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('user_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('name', 'LIKE', '%' . $phrase . '%')

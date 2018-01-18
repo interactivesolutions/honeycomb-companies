@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -7,14 +9,16 @@ use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesTypes;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesTypesTranslations;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesTypesValidator;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesTypesTranslationsValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesTypesValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesTypesTranslationsValidator;
 
+/**
+ * Class HCCompaniesTypesController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies
+ */
 class HCCompaniesTypesController extends HCBaseController
 {
-
     //TODO recordsPerPage setting
-
     /**
      * Returning configured admin view
      *
@@ -56,24 +60,24 @@ class HCCompaniesTypesController extends HCBaseController
      *
      * @return array
      */
-    private function getAdminListHeader()
+    private function getAdminListHeader(): array
     {
         return [
             'country_id' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_types.country_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_types.country_id'),
             ],
             'short_name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_types.name'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_types.name'),
             ],
             'translations.{lang}.name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_types.name'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_types.name'),
             ],
             'translations.{lang}.description' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_types.description'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_types.description'),
             ],
 
         ];
@@ -83,6 +87,7 @@ class HCCompaniesTypesController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
@@ -97,8 +102,9 @@ class HCCompaniesTypesController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -133,8 +139,9 @@ class HCCompaniesTypesController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCCompaniesTypesTranslations::destroy(HCCompaniesTypesTranslations::whereIn('record_id',
-            $list)->pluck('id')->toArray());
+        HCCompaniesTypesTranslations::destroy(
+            HCCompaniesTypesTranslations::whereIn('record_id', $list)->pluck('id')->toArray()
+        );
         HCCompaniesTypes::destroy($list);
 
         return hcSuccess();
@@ -184,7 +191,7 @@ class HCCompaniesTypesController extends HCBaseController
 
         $list = HCCompaniesTypes::with($with)
             ->select($select)
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -211,7 +218,7 @@ class HCCompaniesTypesController extends HCBaseController
         $r = HCCompaniesTypes::getTableName();
         $t = HCCompaniesTypesTranslations::getTableName();
 
-        $query->where(function(Builder $query) use ($phrase) {
+        $query->where(function (Builder $query) use ($phrase) {
             $query->where('country_id', 'LIKE', '%' . $phrase . '%');
         });
 
@@ -224,6 +231,7 @@ class HCCompaniesTypesController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {

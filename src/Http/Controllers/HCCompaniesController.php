@@ -10,6 +10,10 @@ use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies;
 use InteractiveSolutions\HoneycombCompanies\Validators\HCCompaniesValidator;
 
+/**
+ * Class HCCompaniesController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers
+ */
 class HCCompaniesController extends HCBaseController
 {
     /**
@@ -54,45 +58,45 @@ class HCCompaniesController extends HCBaseController
      *
      * @return array
      */
-    public function getAdminListHeader()
+    public function getAdminListHeader(): array
     {
         return [
             'logo_id' => [
-                "type" => "image",
-                "label" => trans('HCTranslations::core.logo'),
+                'type' => 'image',
+                'label' => trans('HCTranslations::core.logo'),
             ],
             'company_code' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.code'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.code'),
             ],
             'name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.name'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.name'),
             ],
             'vat' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.vat'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.vat'),
             ],
             'country.translation' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.country_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.country_id'),
             ],
             'municipality.translation' => [
-                "type" => "text",
-                "label" => trans('HCTranslations::core.municipality'),
+                'type' => 'text',
+                'label' => trans('HCTranslations::core.municipality'),
             ],
             'city.name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.city_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.city_id'),
             ],
             'type_id' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.type_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.type_id'),
             ],
 
             'website' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies.website'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies.website'),
             ],
 
         ];
@@ -103,7 +107,6 @@ class HCCompaniesController extends HCBaseController
      * @return mixed
      * @throws \Exception
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     * @throws \InvalidArgumentException
      */
     protected function __apiStore()
     {
@@ -121,7 +124,6 @@ class HCCompaniesController extends HCBaseController
      * @return mixed
      * @throws \Exception
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     * @throws \InvalidArgumentException
      */
     protected function __apiUpdate(string $id)
     {
@@ -140,7 +142,6 @@ class HCCompaniesController extends HCBaseController
      * @param string $id
      * @return mixed
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     * @throws \InvalidArgumentException
      */
     protected function __apiUpdateStrict(string $id)
     {
@@ -193,7 +194,6 @@ class HCCompaniesController extends HCBaseController
      *
      * @param array $select
      * @return mixed
-     * @throws \InvalidArgumentException
      */
     protected function createQuery(array $select = null)
     {
@@ -205,7 +205,7 @@ class HCCompaniesController extends HCBaseController
 
         $list = HCCompanies::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -229,7 +229,7 @@ class HCCompaniesController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('name', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('vat', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('country_id', 'LIKE', '%' . $phrase . '%')
@@ -274,7 +274,6 @@ class HCCompaniesController extends HCBaseController
      * @param string $id
      * @return mixed
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     * @throws \InvalidArgumentException
      */
     public function apiShow(string $id)
     {

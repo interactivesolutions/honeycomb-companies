@@ -1,21 +1,24 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesAddressesTypes;
 use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesAddressesTypesTranslations;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesAddressesTypesTranslationsValidator;
-use InteractiveSolutions\HoneycombCompanies\Validators\hccompanies\HCCompaniesAddressesTypesValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesAddressesTypesTranslationsValidator;
+use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesAddressesTypesValidator;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 
-
+/**
+ * Class HCCompaniesAddressesTypesController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies
+ */
 class HCCompaniesAddressesTypesController extends HCBaseController
 {
-
     //TODO recordsPerPage setting
-
     /**
      * Returning configured admin view
      *
@@ -33,16 +36,22 @@ class HCCompaniesAddressesTypesController extends HCBaseController
             'headers' => $this->getAdminListHeader(),
         ];
 
-        if (auth()->user()->can('interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create')) {
+        if (auth()->user()->can(
+            'interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_create'
+        )) {
             $config['actions'][] = 'new';
         }
 
-        if (auth()->user()->can('interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update')) {
+        if (auth()->user()->can(
+            'interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_update'
+        )) {
             $config['actions'][] = 'update';
             $config['actions'][] = 'restore';
         }
 
-        if (auth()->user()->can('interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete')) {
+        if (auth()->user()->can(
+            'interactivesolutions_honeycomb_companies_routes_hc_companies_addresses_types_delete'
+        )) {
             $config['actions'][] = 'delete';
         }
 
@@ -57,12 +66,12 @@ class HCCompaniesAddressesTypesController extends HCBaseController
      *
      * @return array
      */
-    private function getAdminListHeader()
+    private function getAdminListHeader(): array
     {
         return [
             'translations.{lang}.title' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses_types.title'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses_types.title'),
             ],
 
         ];
@@ -73,7 +82,7 @@ class HCCompaniesAddressesTypesController extends HCBaseController
      *
      * @return array
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = [];
 
@@ -84,6 +93,7 @@ class HCCompaniesAddressesTypesController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
@@ -99,6 +109,7 @@ class HCCompaniesAddressesTypesController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -110,7 +121,6 @@ class HCCompaniesAddressesTypesController extends HCBaseController
         if (array_has($_data, 'id')) {
             array_set($data, 'record.id', array_get($_data, 'id'));
         }
-
 
         $translations = array_get($_data, 'translations');
 
@@ -146,8 +156,9 @@ class HCCompaniesAddressesTypesController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -182,8 +193,11 @@ class HCCompaniesAddressesTypesController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCCompaniesAddressesTypesTranslations::destroy(HCCompaniesAddressesTypesTranslations::whereIn('record_id',
-            $list)->pluck('id')->toArray());
+        HCCompaniesAddressesTypesTranslations::destroy(
+            HCCompaniesAddressesTypesTranslations::whereIn('record_id', $list)
+                ->pluck('id')
+                ->toArray()
+        );
         HCCompaniesAddressesTypes::destroy($list);
 
         return hcSuccess();
@@ -233,7 +247,7 @@ class HCCompaniesAddressesTypesController extends HCBaseController
 
         $list = HCCompaniesAddressesTypes::with($with)
             ->select($select)
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -260,7 +274,7 @@ class HCCompaniesAddressesTypesController extends HCBaseController
         $r = HCCompaniesAddressesTypes::getTableName();
         $t = HCCompaniesAddressesTypesTranslations::getTableName();
 
-        $query->where(function(Builder $query) use ($phrase) {
+        $query->where(function (Builder $query) use ($phrase) {
             $query;
         });
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -8,6 +10,10 @@ use InteractiveSolutions\HoneycombCompanies\Models\HCCompanies\HCCompaniesAddres
 use InteractiveSolutions\HoneycombCompanies\Validators\HCCompanies\HCCompaniesAddressesValidator;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 
+/**
+ * Class HCCompaniesAddressesController
+ * @package InteractiveSolutions\HoneycombCompanies\Http\Controllers\HCCompanies
+ */
 class HCCompaniesAddressesController extends HCBaseController
 {
     /**
@@ -51,40 +57,40 @@ class HCCompaniesAddressesController extends HCBaseController
      *
      * @return array
      */
-    public function getAdminListHeader()
+    public function getAdminListHeader(): array
     {
         return [
             'company.name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.company_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.company_id'),
             ],
             'type.translation.title' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.type_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.type_id'),
             ],
             'title' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.title'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.title'),
             ],
             'employee.email' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.employee_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.employee_id'),
             ],
             'country.translation' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.country_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.country_id'),
             ],
             'city.name' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.city_id'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.city_id'),
             ],
             'street' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.street'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.street'),
             ],
             'zip' => [
-                "type" => "text",
-                "label" => trans('HCCompanies::hc_companies_addresses.zip'),
+                'type' => 'text',
+                'label' => trans('HCCompanies::hc_companies_addresses.zip'),
             ],
 
         ];
@@ -106,6 +112,7 @@ class HCCompaniesAddressesController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
@@ -122,6 +129,7 @@ class HCCompaniesAddressesController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -178,8 +186,9 @@ class HCCompaniesAddressesController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -262,7 +271,7 @@ class HCCompaniesAddressesController extends HCBaseController
 
         $list = HCCompaniesAddresses::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -286,7 +295,7 @@ class HCCompaniesAddressesController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('company_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('type_id', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('title', 'LIKE', '%' . $phrase . '%')
